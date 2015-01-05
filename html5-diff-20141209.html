@@ -1,0 +1,1871 @@
+<!DOCTYPE html><html lang="en-US"><head>
+    <meta charset="utf-8">
+
+    <title>HTML5 Differences from HTML4</title>
+
+    <style>
+      @media screen { code { color: #D93B00; } code :link, code :visited { color: inherit; } }
+      pre, code { font-size: inherit; font-family: monospace; font-variant: normal; }
+      pre strong { color: black; font: inherit; font-weight: bold; background: yellow; }
+      .XXX { color: #E50000; background: white; border: solid red; padding: 0.5em; margin: 1em 0; }
+    </style>
+    <style>
+      .bad { color: gray; }
+    </style>
+    <link href="http://www.w3.org/StyleSheets/TR/W3C-WG-NOTE" rel="stylesheet">
+  </head>
+  <body>
+    <!--
+
+     Editor's checklist for stuff to fix for publication:
+
+       * Previous Versions links
+
+     Applied search/replace:
+
+       * https://html\.spec\.whatwg\.org/multipage/[^#]+# -> http://www.w3.org/TR/html5/single-page.html#
+       * isindex-2 -> isindex-0
+       * colour -> color
+       * http://www.w3.org/html/wg/drafts/html/CR/ -> http://www.w3.org/TR/2014/REC-html5-20141028/
+       * //html.spec.whatwg.org/multipage/embedded-content.html#alt -> http://www.w3.org/TR/html5/single-page.html#alt
+       * //html.spec.whatwg.org/multipage/embedded-content.html#events-2 -> http://www.w3.org/TR/html5/single-page.html#events-0
+       * removed link to latest editor's draft
+
+    -->
+    <div class="head">
+      <div>
+<!--begin-logo-->
+<p><a href="http://www.w3.org/"><img alt="W3C" height="48" src="http://www.w3.org/Icons/w3c_home" width="72"></a></p>
+<!--end-logo--></div>
+
+
+
+
+      <div>
+        <h1>HTML5与HTML4 的差异</h1>
+        <h2 class="no-num no-toc" id="w3c-doctype">W3C 工作组笔记 2013年12月9日</h2>
+      </div>
+
+      <dl>
+        <dt>当前版本:</dt>
+        <dd class="not-draft"><a href="http://www.w3.org/TR/2014/NOTE-html5-diff-20141209/">http://www.w3.org/TR/2014/NOTE-html5-diff-20141209/</a></dd>
+        <dt class="not-draft">最新版本:</dt>
+        <dd class="not-draft"><a href="http://www.w3.org/TR/html5-diff/">http://www.w3.org/TR/html5-diff/</a></dd>
+
+        <dt>参与:</dt>
+        <dd><a href="https://www.w3.org/Bugs/Public/enter_bug.cgi?product=HTML%20WG&amp;component=HTML5%20differences%20from%20HTML4">归档bug</a>
+         (<a href="https://www.w3.org/Bugs/Public/buglist.cgi?product=HTML%20WG&amp;component=HTML5%20differences%20from%20HTML4&amp;resolution=---">开放的bug</a>)
+        <dt>版本历史:
+        <dd><a href="https://github.com/whatwg/html-differences/commits">https://github.com/whatwg/html-differences/commits</a>
+
+        <dt>之前的版本:</dt>
+        <dd><a href="http://www.w3.org/TR/2014/WD-html5-diff-20140918/">http://www.w3.org/TR/2014/WD-html5-diff-20140918/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2013/WD-html5-diff-20130528/">http://www.w3.org/TR/2013/WD-html5-diff-20130528/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2012/WD-html5-diff-20121025/">http://www.w3.org/TR/2012/WD-html5-diff-20121025/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2012/WD-html5-diff-20120329/">http://www.w3.org/TR/2012/WD-html5-diff-20120329/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2011/WD-html5-diff-20110525/">http://www.w3.org/TR/2011/WD-html5-diff-20110525/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2011/WD-html5-diff-20110405/">http://www.w3.org/TR/2011/WD-html5-diff-20110405/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2011/WD-html5-diff-20110113/">http://www.w3.org/TR/2011/WD-html5-diff-20110113/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2010/WD-html5-diff-20101019/">http://www.w3.org/TR/2010/WD-html5-diff-20101019/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2010/WD-html5-diff-20100624/">http://www.w3.org/TR/2010/WD-html5-diff-20100624/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2010/WD-html5-diff-20100304/">http://www.w3.org/TR/2010/WD-html5-diff-20100304/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2009/WD-html5-diff-20090825/">http://www.w3.org/TR/2009/WD-html5-diff-20090825/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2009/WD-html5-diff-20090423/">http://www.w3.org/TR/2009/WD-html5-diff-20090423/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2009/WD-html5-diff-20090212/">http://www.w3.org/TR/2009/WD-html5-diff-20090212/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2008/WD-html5-diff-20080610/">http://www.w3.org/TR/2008/WD-html5-diff-20080610/</a></dd>
+        <dd><a href="http://www.w3.org/TR/2008/WD-html5-diff-20080122/">http://www.w3.org/TR/2008/WD-html5-diff-20080122/</a></dd>
+
+        <dt>编者:</dt>
+        <dd>Simon Pieters
+        (<a href="http://www.opera.com/">Opera Software ASA</a>)
+        &lt;<a href="mailto:simonp@opera.com">simonp@opera.com</a>&gt;</dd>
+        <dt>之前的编者:</dt>
+        <dd><a href="https://annevankesteren.nl/">Anne van Kesteren</a>
+        &lt;<a href="mailto:annevk@annevk.nl">annevk@annevk.nl</a>&gt;</dd>
+      </dl>
+
+
+
+      <div>
+<!--begin-copyright-->
+<p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">版权所有</a> © 2014 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>©</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>)，保留所有权利。适用 W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">责任</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">商标</a> 及 <a href="http://www.w3.org/Consortium/Legal/copyright-documents">文档使用</a> 规则。</p>
+<!--end-copyright--></div>
+
+      </div>
+
+    <hr>
+
+    <h2 class="no-num no-toc" id="abstract">摘要</h2>
+
+
+    <p>"HTML5与HTML4 的差异" 描述了HTML5规范中那些与HTML4中的差异。</p>
+
+
+    <div>
+    <h2 class="no-num no-toc" id="sotd">本文档的状态</h2>
+
+    <p><i>本节描述了本文档在其出版时的状态。其他文档也可能取代本文档。当前W3C的发布列表，以及本技术报告的最新修订，可以在<a href="http://www.w3.org/TR/">W3C技术报告索引</a>中找到，网址是 http://www.w3.org/TR/.</i></p>
+
+    <p>这是一份由<a href="http://www.w3.org/html/wg/">HTML工作组</a>产生的2014年12月9日的W3C工作组笔记，其作为<a href="http://www.w3.org/MarkUp/Activity">HTML活动</a>的一部分，工作组打算将这份文档作为<a href="http://www.w3.org/2005/10/Process-20051014/#WGNote">工作组笔记</a>发布。征求意见的对应论坛是
+    <a href="https://www.w3.org/Bugs/Public/enter_bug.cgi?product=HTML%20WG&amp;component=HTML5%20differences%20from%20HTML4">W3C
+    Bugzilla</a>。 (<a href="mailto:public-html-comments@w3.org">public-html-comments@w3.org</a>,
+    这个伴随着<a href="http://lists.w3.org/Archives/Public/public-html-comments/" title="Archive for HTML comments mailing-list">公共档案</a>的邮件列表，不再作为追踪评论使用。)</p>
+
+    <p>作为一份工作组笔记公布并不意味着W3C成员的认可。这是一个草案文件，并随时可能会被其他文档更新、取代或者废弃。在进程中的工作外引用此文档是不恰当的。</p>
+
+    <p>本文档是由一个小组根据
+    <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">2004年2月5日W3C专利政策</a>
+    操作并生成。 W3C维护了一个<a href="http://www.w3.org/2004/01/pp-impl/40318/status" rel="disclosure">专利披露的公开名单</a>，用来将小组的交付相连。
+    该页还包括披露专利的说明。拥有专利实际知识的个人，如果个人相信此专利包含<a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">必要的申明</a>，则必须按照<a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">W3C专利政策的第6条</a>来披露信息。</p>
+
+    <p>
+      本文档受制于<a href="http://www.w3.org/2005/10/Process-20051014/" id="w3c_process_revision">2005年10月14日万维网联盟流程文档</a>.
+    </p>
+    </div>
+
+    <h2 class="no-num no-toc" id="toc">内容表</h2>
+
+
+<!--begin-toc-->
+<ul class="toc">
+ <li><a href="#introduction"><span class="secno">1 </span>简介</a>
+  <ul class="toc">
+   <li><a href="#scope"><span class="secno">1.1 </span>本文档的范围</a></li>
+   <li><a href="#history"><span class="secno">1.2 </span>HTML的历史</a></li>
+   <li><a href="#open-issues"><span class="secno">1.3 </span>开放的问题</a></li>
+   <li><a href="#backward-compatibility"><span class="secno">1.4 </span>向后兼容</a></ul></li>
+ <li><a href="#syntax"><span class="secno">2 </span>语法</a>
+  <ul class="toc">
+   <li><a href="#character-encoding"><span class="secno">2.1 </span>字符编码</a></li>
+   <li><a href="#doctype"><span class="secno">2.2 </span>Doctype</a></li>
+   <li><a href="#mathml-svg"><span class="secno">2.3 </span>MathML和SVG</a></li>
+   <li><a href="#syntax-misc"><span class="secno">2.4 </span>杂项</a></ul></li>
+ <li><a href="#language"><span class="secno">3 </span>语言</a>
+  <ul class="toc">
+   <li><a href="#new-elements"><span class="secno">3.1 </span>新元素</a></li>
+   <li><a href="#new-attributes"><span class="secno">3.2 </span>新属性</a></li>
+   <li><a href="#changed-elements"><span class="secno">3.3 </span>变更的元素</a></li>
+   <li><a href="#changed-attributes"><span class="secno">3.4 </span>变更的属性</a></li>
+   <li><a href="#obsolete-elements"><span class="secno">3.5 </span>废弃的元素</a></li>
+   <li><a href="#obsolete-attributes"><span class="secno">3.6 </span>废弃的属性</a></ul></li>
+ <li><a href="#content-model"><span class="secno">4 </span>内容模型</a></li>
+ <li><a href="#apis"><span class="secno">5 </span>API</a>
+  <ul class="toc">
+   <li><a href="#new-apis"><span class="secno">5.1 </span>新API</a></li>
+   <li><a href="#changed-apis"><span class="secno">5.2 </span>变更的API</a></li>
+   <li><a href="#document-extensions"><span class="secno">5.3 </span><code>Document</code>扩展</a></li>
+   <li><a href="#htmlelement-extensions"><span class="secno">5.4 </span><code>HTMLElement</code>扩展</a></li>
+   <li><a href="#other-extensions"><span class="secno">5.5 </span>其他接口扩展</a></li>
+   <li><a href="#obsolete-apis"><span class="secno">5.6 </span>废弃的API</a></ul></li>
+ <li><a class="no-num" href="#acknowledgments">致谢</a></li>
+ <li><a class="no-num" href="#references">参考文献</a></ul>
+<!--end-toc-->
+
+
+    <h2 id="introduction"><span class="secno">1 </span>简介</h2>
+
+    <h3 id="scope"><span class="secno">1.1 </span>本文档的范围</h3>
+
+
+
+    <p>本文档涵盖W3C HTML5规范。但不涵盖W3C HTML5.1规范或WHATWG HTML标准。
+    <a href="#refsHTML5">[HTML5]</a>
+    <a href="#refsHTML5NIGHTLY">[HTML5NIGHTLY]</a>
+    <a href="#refsHTML">[HTML]</a></p>
+
+    <h3 id="history"><span class="secno">1.2 </span>HTML的历史</h3>
+
+    <p>HTML自从90年代初被引入到互联网以来一直在不断发展。某些特性被规范引入；其他则被软件的发布引入。在某些方面，实现以及web开发者的实践不仅相互融合，也与规范与标准融合，但在其他方面它们也有所偏离</p>
+
+    <p>HTML4在1997年成为W3C推荐标准。虽然它继续作为诸多HTML的核心功能的粗略的指南，但它并没有提供足够的用以构建相互操作的实现信息，更重要的是，也没有提供用以操作的Web内容的实现信息。定义了HTML4的XML序列化的XHTML1，以及为HTML和XHTML定义了JavaScript API的DOM Level 2 HTML也是同样的情况，HTML会取代这些文档。 <a href="#refsDOM2HTML">[DOM2HTML]</a>
+    <a href="#refsHTML4">[HTML4]</a>
+    <a href="#refsXHTML1">[XHTML1]</a>
+
+    <p>HTML规范反映了自2004年开始的研究当代HTML实现及Web内容的努力。规范:</p>
+
+    <ol>
+      <li><p>定义了单一的语言叫做HTML，它可以用HTML或者XML的语法书写。</li>
+      <li><p>定义详细的处理模式，以促进互操作的实现。</li>
+      <li><p>为文档改进标记。</li>
+      <li><p>为新兴词语引入标记和API，如Web应用。</li>
+    </ol>
+
+
+    <h3 id="open-issues"><span class="secno">1.3 </span>开放的问题</h3>
+
+    <p>请查看HTML5规范中“本文档的状态”章节。
+
+    <h3 id="backward-compatibility"><span class="secno">1.4 </span>向后兼容</h3>
+
+    <p>HTML被定义为与用户代理处理内容的方式向后兼容。为了对Web开发者保持语言的相对简单，一些旧的元素和属性不再被包含在内，它们会在文档的其他小节列出，比如表示样式的元素用CSS来处理会更好。</p>
+
+    <p>当然用户代理将会总是支持这些老的元素和属性。这就是为什么HTML规范清楚地分离对Web开发者(在规范中被称为作者)和用户代理的要求的原因。
+	例如，这意味着Web开发者不能再使用 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#isindex-0">isindex</a></code> 或者 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#plaintext">plaintext</a></code>
+	元素，但是用户代理为了兼容Web内容，而被要求以兼容这些元素如何表现的方式支持它们。</p>
+
+    <p>因为HTML已经分离了对作者和用户代理的一致性要求，所以不再需要用“废弃(deprecated)”去标记一个已过时的功能。</p>
+
+
+
+
+
+    <h2 id="syntax"><span class="secno">2 </span>语法</h2>
+
+    <p>HTML定义了一种语法，被称为HTML语法，其几乎兼容在web上已发布的HTML4和XHTML1文档，但不兼容更为深奥的HTML4的SGML特性。
+	比如
+    <a href="http://www.w3.org/TR/1999/REC-html401-19991224/appendix/notes.html#h-B.3.6">处理指令</a>
+    和
+    <a href="http://www.w3.org/TR/1999/REC-html401-19991224/appendix/notes.html#h-B.3.7">速记标记</a>，因为大多数用户代理都不支持这些。使用HTML语法的文件的媒体类型是 <code>text/html</code>。</p>
+
+    <p>HTML也为这个很大程度上与HTML4时代的实现相兼容的语法定义了详细的解析规则(包括“错误处理”)，用户代理必须对有 <code>text/html</code> 媒体类型的资源使用这些规则。这里是一个符合HTML语法的范例文件:</p>
+
+    <pre>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Example document&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Example paragraph&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+    <p>另一种可以被用作HTML的语法是XML。此语法与XHTML1的文件和实现相兼容。使用这种语法的文件需使用XML媒体类型(比如 <code>application/xhtml+xml</code>
+	或 <code>application/xml</code>)，并且元素需被放进 <code>http://www.w3.org/1999/xhtml</code> 命名空间并遵循XML规范中规定的规则
+    <a href="#refsXML">[XML]</a> <a href="#refsXMLNS">[XMLNS]</a>
+
+    <p>下面是一个符合HTML的XML语法的范例文件:</p>
+
+    <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Example document&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Example paragraph&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+    <h3 id="character-encoding"><span class="secno">2.1 </span>字符编码</h3>
+
+    <p>对于HTML语法，要求Web开发者声明字符编码。有三种设置的方法：</p>
+
+    <ul>
+      <li><p>在传输层；例如通过使用HTTP <code>Content-Type</code> 头。</li>
+
+      <li><p>在文件的开头使用字节顺序标记(BOM)字符。这些字符提供了所使用编码的签名。</li>
+
+      <li><p>使用一个带有 <code class="external" title="attr-meta-charset"><a href="http://www.w3.org/TR/html5/single-page.html#attr-meta-charset">charset</a></code>
+	  属性的 
+	  <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-meta-element">meta</a></code> 
+	  元素，在该文件的前1024字节里，指定编码。例如，可以使用  <code>&lt;meta charset="UTF-8"&gt;</code> 
+	  来指定UTF-8编码。这取代了原来的 <code>&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;</code>，尽管后者仍然有效。</li>
+    </ul>
+
+    <p>对于XML语法而言，Web开发者必须使用XML规范中规定的规则来设置字符编码。</p>
+
+    <h3 id="doctype"><span class="secno">2.2 </span>Doctype</h3>
+
+    <p>HTML语法要求定义一个doctype来确保浏览器使用标准模式渲染页面。doctype没有其他目的。 <a href="#refsDOCTYPE">[DOCTYPE]</a>
+
+    <p>HTML语法的doctype声明是 <code>&lt;!DOCTYPE html&gt;</code>，且不区分大小写。之前版本的HTML的doctype要更长，那是因为HTML语言基于SGML，因此需要一个DTD的引用。现在已经不再是这种情况，并且需要doctype只是为使用HTML语法撰写的文档启用标准模式。浏览器已经为 <code>&lt;!DOCTYPE html&gt;</code> 做到了这一点。</p>
+
+    <p>为了支持不能产生首选简短doctype的遗留的标记生成器，doctype <code>&lt;!DOCTYPE html SYSTEM
+    "about:legacy-compat"&gt;</code> 在HTML语法里是被允许的。
+
+    <p>HTML 4.0，HTML 4.01,，XHTML 1.0以及XHTML 1.1的严格型(strict) doctypes在HTML语法里也是被允许的(但不鼓励这么做)。
+
+    <p>在XML语法里，可以使用任何doctype声明，或者也可以一起忽略。以XML为媒体类型的文档总是在标准模式中处理。
+
+
+    <h3 id="mathml-svg"><span class="secno">2.3 </span>MathML和SVG</h3>
+
+    <p>HTML语法允许在文档中使用MathML和SVG元素。<code>math</code> 或者 <code>svg</code> 开始标签会使HTML解析器切换到一个特殊的插入模式，此模式將元素和属性放到合适的命名空间，修正有混合情况的元素和属性，并支持如XML中的空元素语法。语法仍然不区分大小写并且属性允许与HTML元素相同的语法。命名空间声明会被省过。CDATA部分则会在插入模式中被支持。
+
+    <p>一些MathML和SVG元素会使解析器切换回“HTML模式”，例如，<code>mtext</code> 和 <code>foreignObject</code>，这样你就可以使用HTML元素或新的 <code>math</code> 或 <code>svg</code> 元素。
+
+    <p>例如，一个非常简单的使用一些最少的语法特性的文档看起来像这样：</p>
+
+    <pre>&lt;!doctype html&gt;
+&lt;title&gt;SVG in text/html&lt;/title&gt;
+&lt;p&gt;
+ A green circle:
+ <strong>&lt;svg&gt; &lt;circle r="50" cx="50" cy="50" fill="green"/&gt; &lt;/svg&gt;</strong>
+&lt;/p&gt;</pre>
+
+    <h3 id="syntax-misc"><span class="secno">2.4 </span>杂项</h3>
+
+    <p>还有一些其他HTML语法的变化值得一提：</p>
+
+    <ul>
+     <li><p><code>&amp;lang;</code> 和 <code>&amp;rang;</code> 命名字符引用现在从 U+2329 和 U+232A(左/右点尖括号)分别扩大到 U+27E8 和 U+27E9(数学的左/右尖括号)
+
+     <li><p>添加了许多新的命名字符引用，包括所有来自MathML的字符
+
+     <li><p>允许Void元素(在HTML4中被称为"EMPTY")有结尾斜杠(trailing slash)
+
+     <li><p>在更多的情况下，与符号 (<code>&amp;</code>) 相比HTML4，会保持不转义
+
+     <li><p>属性间必须被至少1个空白字符分隔
+
+     <li><p>空值的属性可以只写属性名而省略等号和值，即使属性不是布尔属性。(人们普遍认为HTML4允许省略布尔属性的值，然而事实是，对于枚举属性，HTML4允许只用属性 <em>value</em> 并省略属性名，但这一点浏览器并不支持。)
+
+     <li><p>允许对值省略引号的属性使用比HTML4更大的字符集
+
+     <li><p>HTML解析器不做任何属性值空白的标准化；比如，<code class="external" title="attr-id"><a href="http://www.w3.org/TR/html5/single-page.html#the-id-attribute">id</a></code> 属性中的开头和结尾空白不会被忽略(从而导致无效)，并且在 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code> 的 <code class="external" title="attr-input-value"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-value">value</a></code> 属性中可以不必使用字符引用，而使用换行符。
+
+     <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-optgroup-element">optgroup</a></code> 结束标签现在是可选项
+
+     <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-colgroup-element">colgroup</a></code> 开始标签现在是可选项并且由HTML解析器推断出来
+    </ul>
+
+
+    <h2 id="language"><span class="secno">3 </span>语言</h2>
+
+    <p>这部分被分割成几个小节来更清楚地阐述相对于HTML4的各种不同。</p>
+
+
+    <h3 id="new-elements"><span class="secno">3.1 </span>新元素</h3>
+
+    <p>为了更好的结构化，引入下面这些元素:</p>
+
+  <ul>
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-section-element">section</a></code>
+      代表一个通用的文件或应用部分。 它<span title="">应该</span>和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h1-element">h1</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h2-element">h2</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h3-element">h3</a></code>,
+      <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h4-element">h4</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h5-element">h5</a></code>, 以及 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h6-element">h6</a></code> 元素<a class="external" href="http://www.w3.org/TR/html5/single-page.html#headings-and-sections" title="Headings and sections">同时使用</a>来表明文档的结构。</li>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-article-element">article</a></code>
+      代表了一个文档内容的独立片段，比如博客条目或报纸文章。</li>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-main-element">main</a></code>
+
+      <span title="">代表了文档或应用的主体内容。</span></li>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-aside-element">aside</a></code>
+      代表了一段与页面的其余部分稍有关联的内容。</li>
+
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-header-element">header</a></code>
+      代表一组介绍或导航辅助。</li>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-footer-element">footer</a></code>
+      代表一个部分(section)的尾(footer)并可以容纳关于作者、版权等信息。</li>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-nav-element">nav</a></code>
+      代表了用于导航目的的文档的一部分。</li>
+
+      <li>
+        <p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-figure-element">figure</a></code>
+        代表一个独立的流内容片段，通常作为一个文档主流的独立单元。</p>
+
+        <pre>&lt;figure&gt;
+ &lt;video src="example.webm" controls&gt;&lt;/video&gt;
+ &lt;figcaption&gt;Example&lt;/figcaption&gt;
+&lt;/figure&gt;</pre>
+
+        <p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-figcaption-element">figcaption</a></code> 被用作标题 (它是可选的)。</p>
+      </li>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-template-element">template</a></code>
+      可被用于声明HTML片段，其会被脚本复制以及插入到文档中。
+    </ul>
+
+    <p>还有其他一些新的元素:</p>
+
+    <ul>
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-video-element">video</a></code> 和
+      <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-audio-element">audio</a></code> 用于多媒体内容。 两者都提供了一个API使得Web开发者可以编写他们自己的用户界面，但也有一种方法触发由用户代理提供的用户界面。如果有各种类型的可用流，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-source-element">source</a></code> 被与这些元素放在一起使用。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-track-element">track</a></code> 提供了 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-video-element">video</a></code> 元素的文本轨道。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-embed-element">embed</a></code> 用于插件内容。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-mark-element">mark</a></code> 代表一连串文档中用作参考的被备注和高亮的文本，由于其在另一个上下文相关。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-progress-element">progress</a></code> 代表一个任务完成度，比如下载或者执行一系列耗时的操作。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-meter-element">meter</a></code> 代表一个度量，比如磁盘使用情况。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-time-element">time</a></code> 表示日期和(或)时间。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-ruby-element">ruby</a></code>,
+      <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-rt-element">rt</a></code>, 以及
+      <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-rp-element">rp</a></code> 用来标注ruby注释
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-bdi-element">bdi</a></code> 代表从其周围独立出来的一段文本，目的是要使用双向文本格式
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-wbr-element">wbr</a></code> 代表一个换行时机
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-canvas-element">canvas</a></code> 用来渲染即时创建的动态位图，比如图表和游戏。</li>
+
+      <li>
+        <p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-datalist-element">datalist</a></code> 
+        与 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code> 
+        的新属性 <code class="external" title="attr-input-list"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-list">list</a></code> 一起使用可以创建组合框：</p>
+
+        <pre>&lt;input <strong>list="browsers"</strong>&gt;
+&lt;datalist <strong>id="browsers"</strong>&gt;
+ &lt;option value="Safari"&gt;
+ &lt;option value="Internet Explorer"&gt;
+ &lt;option value="Opera"&gt;
+ &lt;option value="Firefox"&gt;
+&lt;/datalist&gt;</pre>
+      </li>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-keygen-element">keygen</a></code>
+      代表了密钥对的生成控制。</li>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-output-element">output</a></code>
+      代表了一些输出类型，比如表单里的通过脚本的计算结果。</li>
+    </ul>
+
+    <p>The <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code> element's <code class="external" title="attr-input-type"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-type">type</a></code> attribute now has the
+    following new values:</p>
+
+    <ul class="brief">
+      <li><code class="external" title="attr-input-type-tel"><a href="http://www.w3.org/TR/html5/single-page.html#telephone-state-(type=tel)">tel</a></code>
+
+      <li><code class="external" title="attr-input-type-search"><a href="http://www.w3.org/TR/html5/single-page.html#text-(type=text)-state-and-search-state-(type=search)">search</a></code>
+
+      <li><code class="external" title="attr-input-type-url"><a href="http://www.w3.org/TR/html5/single-page.html#url-state-(type=url)">url</a></code>
+
+      <li><code class="external" title="attr-input-type-email"><a href="http://www.w3.org/TR/html5/single-page.html#e-mail-state-(type=email)">email</a></code>
+
+      <li><code class="external" title="attr-input-type-date"><a href="http://www.w3.org/TR/html5/single-page.html#date-state-(type=date)">date</a></code>
+
+      <li><code class="external" title="attr-input-type-time"><a href="http://www.w3.org/TR/html5/single-page.html#time-state-(type=time)">time</a></code>
+
+      <li><code class="external" title="attr-input-type-number"><a href="http://www.w3.org/TR/html5/single-page.html#number-state-(type=number)">number</a></code>
+
+      <li><code class="external" title="attr-input-type-range"><a href="http://www.w3.org/TR/html5/single-page.html#range-state-(type=range)">range</a></code>
+
+      <li><code class="external" title="attr-input-type-color"><a href="http://www.w3.org/TR/html5/single-page.html#color-state-(type=color)">color</a></code>
+    </ul>
+
+    <p>新增这些类型的想法，是用户代理可以提供用户界面，比如一个日历日期选择器或用户的地址簿的整合，并提交一个确定的格式到服务器。这给了用户更好的体验，因为他的输入在发送到服务器前被检查，这意味着更少的等待反馈的时间。</p>
+
+
+    <h3 id="new-attributes"><span class="secno">3.2 </span>新属性</h3>
+
+    <p>几个新属性被引入到了已经是HTML4一部分的各种元素上：</p>
+
+    <ul>
+      <li><p>为了和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-a-element">a</a></code>
+      和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-link-element">link</a></code>
+      元素的一致性，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-area-element">area</a></code>
+      元素现在也有了<code class="external" title="attr-hyperlink-hreflang"><a href="http://www.w3.org/TR/html5/single-page.html#attr-hyperlink-hreflang">hreflang</a></code>, <code class="external" title="attr-hyperlink-type"><a href="http://www.w3.org/TR/html5/single-page.html#attr-hyperlink-type">type</a></code>
+      和 <code class="external" title="attr-hyperlink-rel"><a href="http://www.w3.org/TR/html5/single-page.html#attr-hyperlink-rel">rel</a></code> 属性。
+
+      <li><p>主要为了和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-a-element">a</a></code> 元素的一致性，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-base-element">base</a></code>
+      元素也有了 <code class="external" title="attr-base-target"><a href="http://www.w3.org/TR/html5/single-page.html#attr-base-target">target</a></code> 属性。(这已被广泛支持)
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-meta-element">meta</a></code>
+      元素现在有了 <code class="external" title="attr-meta-charset"><a href="http://www.w3.org/TR/html5/single-page.html#attr-meta-charset">charset</a></code>
+      属性，因为这已经被广泛支持并且提供了一个定义文档字符编码(<a href="#character-encoding">character encoding</a>)的好方法。
+
+      <li><p>可以在 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code>
+      (除了当 <code class="external" title="attr-input-type"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-type">type</a></code> 
+      属性为 <code class="external" title="attr-input-type-hidden"><a href="http://www.w3.org/TR/html5/single-page.html#hidden-state-(type=hidden)">hidden</a></code> 
+      时), <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-select-element">select</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-textarea-element">textarea</a></code>
+      和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-button-element">button</a></code> 元素上定义一个新的 <code class="external" title="attr-fe-autofocus"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fe-autofocus">autofocus</a></code>
+      属性。它提供了一种页面加载时聚焦表单控件的声明方式。相比使用脚本聚焦元素，使用这个特性可以提升用户体验，比如，如果用户不喜欢可以关闭它。
+      
+      <li>
+       <p>可以在 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code>
+       和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-textarea-element">textarea</a></code>
+       元素上定义一个新的 <code class="external" title="attr-input-placeholder"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-placeholder">placeholder</a></code>
+       属性。它代表了一个提示，旨在帮助用户数据录入。</p>
+       <pre>&lt;input type=search name=q <strong>placeholder="Enter search phrase..."</strong>&gt; &lt;button&gt;Search&lt;/button&gt;</pre>
+       <pre>&lt;label&gt;Email &lt;input type=email name=email <strong>placeholder="john@example.com"</strong>&gt;&lt;/label&gt;</pre>
+       <p><code class="external" title="attr-input-placeholder"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-placeholder">placeholder</a></code> 
+       属性不该被用作 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-label-element">label</a></code> 元素的替代。
+
+       <pre class="bad">&lt;!-- Do not do this: --&gt;
+&lt;input type=email name=email placeholder="Email"&gt;</pre>
+      </li>
+
+      <li>
+       <p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-output-element">output</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-select-element">select</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-textarea-element">textarea</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-button-element">button</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-label-element">label</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-fieldset-element">fieldset</a></code> 元素有了新的 <code class="external" title="attr-fae-form"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fae-form">form</a></code>
+       属性，允许控件关联一个表单。现在这些元素可以放置在页面的任何地方，它们仍和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-form-element">form</a></code> 关联，而不是只能作为 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-form-element">form</a></code> 元素的子元素。</p>
+
+       <pre>&lt;table&gt;
+ &lt;tr&gt;
+  &lt;th&gt;Key
+  &lt;th&gt;Value
+  &lt;th&gt;Action
+ &lt;tr&gt;
+  &lt;td&gt;&lt;form <strong>id=1</strong>&gt;&lt;input name=1-key&gt;&lt;/form&gt;
+  &lt;td&gt;&lt;input <strong>form=1</strong> name=1-value&gt;
+  &lt;td&gt;&lt;button <strong>form=1</strong> name=1-action value=save&gt;?&lt;/button&gt;
+      &lt;button <strong>form=1</strong> name=1-action value=delete&gt;?&lt;/button&gt;
+ ...
+&lt;/table&gt;</pre>
+      </li>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code> (除了 <code class="external" title="attr-input-type"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-type">type</a></code>
+      属性值是 <code class="external" title="attr-input-type-hidden"><a href="http://www.w3.org/TR/html5/single-page.html#hidden-state-(type=hidden)">hidden</a></code> , <code class="external" title="attr-input-type-image"><a href="http://www.w3.org/TR/html5/single-page.html#image-button-state-(type=image)">image</a></code>
+      或一些按钮类型比如 <code class="external" title="attr-input-type-submit"><a href="http://www.w3.org/TR/html5/single-page.html#submit-button-state-(type=submit)">submit</a></code>
+      外), <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-select-element">select</a></code>
+      和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-textarea-element">textarea</a></code> 有了新的 <code class="external" title="attr-input-required"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-required">required</a></code>
+      属性，它提示用户为了能够提交表单而必须填入一个值。对于 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-select-element">select</a></code> 来说，第一个 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-option-element">option</a></code> 元素必须以一个空值占位。
+      
+      <pre>&lt;label&gt;Color: &lt;select name=color <strong>required</strong>&gt;
+ &lt;option <strong>value=""</strong>&gt;Choose one
+ &lt;option&gt;Red
+ &lt;option&gt;Green
+ &lt;option&gt;Blue
+&lt;/select&gt;&lt;/label&gt;</pre>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-fieldset-element">fieldset</a></code>
+      元素现在允许用 <code class="external" title="attr-fieldset-disabled"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fieldset-disabled">disabled</a></code>
+      属性来禁用所有子元素的控制(不包括那些 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-legend-element">legend</a></code> 元素的子元素)，并允许用 <code class="external" title="attr-fe-name"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fe-name">name</a></code> 属性作脚本访问。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code>
+      元素有几个新的属性来来指定约束： <code class="external" title="attr-fe-autocomplete"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fe-autocomplete">autocomplete</a></code>, <code class="external" title="attr-input-min"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-min">min</a></code>, <code class="external" title="attr-input-max"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-max">max</a></code>, <code class="external" title="attr-input-multiple"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-multiple">multiple</a></code>, <code class="external" title="attr-input-pattern"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-pattern">pattern</a></code> 和 <code class="external" title="attr-input-step"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-step">step</a></code>。之前已经提到，它还有一个与 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-datalist-element">datalist</a></code> 元素一起使用的新的 <code class="external" title="attr-input-list"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-list">list</a></code> 属性。当使用 <code>type=image</code> 时，它也有 <code class="external" title="attr-dim-width"><a href="http://www.w3.org/TR/html5/single-page.html#attr-dim-width">width</a></code> 和 <code class="external" title="attr-dim-height"><a href="http://www.w3.org/TR/html5/single-page.html#attr-dim-height">height</a></code> 属性来指定图像的尺寸。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-textarea-element">textarea</a></code> 元素有了一个新元素 <code class="external" title="attr-fe-dirname"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fe-dirname">dirname</a></code>，用于用户所设置的提交的方向性的控制
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-textarea-element">textarea</a></code> 元素也多了三个新属性，<code class="external" title="attr-textarea-maxlength"><a href="http://www.w3.org/TR/html5/single-page.html#attr-textarea-maxlength">maxlength</a></code>, <code class="external" title="attr-textarea-minlength"><a href="http://www.w3.org/TR/html5/single-page.html#attr-textarea-minlength">minlength</a></code> 和 <code class="external" title="attr-textarea-wrap"><a href="http://www.w3.org/TR/html5/single-page.html#attr-textarea-wrap">wrap</a></code>，分别用来控制最大输入长度和提交的换行行为。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-form-element">form</a></code> 元素有了 <code class="external" title="attr-fs-novalidate"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-novalidate">novalidate</a></code> 属性，可以用来禁用表单验证提交(即表单总是可以被提交)。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-button-element">button</a></code> 元素有了新属性 <code class="external" title="attr-fs-formaction"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-formaction">formaction</a></code>, <code class="external" title="attr-fs-formenctype"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-formenctype">formenctype</a></code>, <code class="external" title="attr-fs-formmethod"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-formmethod">formmethod</a></code>, <code class="external" title="attr-fs-formnovalidate"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-formnovalidate">formnovalidate</a></code>, 和 <code class="external" title="attr-fs-formtarget"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-formtarget">formtarget</a></code>。如果存在，它们覆盖 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-form-element">form</a></code> 元素上的 <code class="external" title="attr-fs-action"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-action">action</a></code>, <code class="external" title="attr-fs-enctype"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-enctype">enctype</a></code>, <code class="external" title="attr-fs-method"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-method">method</a></code>, <code class="external" title="attr-fs-novalidate"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-novalidate">novalidate</a></code>, 和 <code class="external" title="attr-fs-target"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-target">target</a></code> 属性。</p>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code>元素也有了一个新属性 <code class="external" title="attr-input-minlength"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-minlength">minlength</a></code>。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-script-element">script</a></code>
+      元素有了一个新属性 <code class="external" title="attr-script-async"><a href="http://www.w3.org/TR/html5/single-page.html#attr-script-async">async</a></code>，可以影响脚本的加载和执行。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-html-element">html</a></code> 元素有了一个新属性 <code class="external" title="attr-html-manifest"><a href="http://www.w3.org/TR/html5/single-page.html#attr-html-manifest">manifest</a></code>，指向一个用于结合离线Web应用API的应用程序缓存清单。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-link-element">link</a></code> 元素有了一个新的属性 <code class="external" title="attr-link-sizes"><a href="http://www.w3.org/TR/html5/single-page.html#attr-link-sizes">sizes</a></code> 。可以结合 <code class="external" title="rel-icon"><a href="http://www.w3.org/TR/html5/single-page.html#rel-icon">icon</a></code> 的关系(通过设置 <code class="external" title="attr-link-rel"><a href="http://www.w3.org/TR/html5/single-page.html#attr-link-rel">rel</a></code> 属性，可被用于如网站图示)一起使用来表明被引用图标的大小。因此允许了不同的尺寸的图标。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-ol-element">ol</a></code> 元素有了一个新属性 <code class="external" title="attr-ol-reversed"><a href="http://www.w3.org/TR/html5/single-page.html#attr-ol-reversed">reversed</a></code> 。当其存在时，代表列表中的顺序为降序。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-iframe-element">iframe</a></code> 元素有了新属性分别是 <code class="external" title="attr-iframe-sandbox"><a href="http://www.w3.org/TR/html5/single-page.html#attr-iframe-sandbox">sandbox</a></code> 和 <code class="external" title="attr-iframe-srcdoc"><a href="http://www.w3.org/TR/html5/single-page.html#attr-iframe-srcdoc">srcdoc</a></code>，用以允许沙箱内容，例如，博客评论。</li>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code> 元素有一个新的属性叫做 <code class="external" title="attr-object-typemustmatch"><a href="http://www.w3.org/TR/html5/single-page.html#attr-object-typemustmatch">typemustmatch</a></code>， 其允许更安全的嵌入外部资源。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code> 元素有了一个新属性叫做 <code class="external" title="attr-img-crossorigin"><a href="http://www.w3.org/TR/html5/single-page.html#attr-img-crossorigin">crossorigin</a></code> 用来在获取过程中使用CORS并且如果成功的话，允许图像数据被 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-canvas-element">canvas</a></code> API 读取。
+
+      </ul>
+
+    <p>一些HTML4的属性现在被应用到所有的元素。这些属性被称为全局属性(global attributes): <code class="external" title="attr-accesskey"><a href="http://www.w3.org/TR/html5/single-page.html#the-accesskey-attribute">accesskey</a></code>, <code class="external" title="attr-class"><a href="http://www.w3.org/TR/html5/single-page.html#classes">class</a></code>, <code class="external" title="attr-dir"><a href="http://www.w3.org/TR/html5/single-page.html#the-dir-attribute">dir</a></code>, <code class="external" title="attr-id"><a href="http://www.w3.org/TR/html5/single-page.html#the-id-attribute">id</a></code>, <code class="external" title="attr-dir"><a href="http://www.w3.org/TR/html5/single-page.html#the-dir-attribute">lang</a></code>, <code class="external" title="attr-style"><a href="http://www.w3.org/TR/html5/single-page.html#the-style-attribute">style</a></code>, <code class="external" title="attr-tabindex"><a href="http://www.w3.org/TR/html5/single-page.html#attr-tabindex">tabindex</a></code> 和 <code class="external" title="attr-title"><a href="http://www.w3.org/TR/html5/single-page.html#the-title-attribute">title</a></code>。此外，XHTML 1.0 只在一些元素上允许 <code>xml:space</code>，现在它被允许用在XHTML文档所有的元素上。</p>
+
+    <p>也有一些新的全局属性:</p>
+
+    <ul>
+      <li><p><code class="external" title="attr-contenteditable"><a href="http://www.w3.org/TR/html5/single-page.html#attr-contenteditable">contenteditable</a></code> 属性表明元素是一个可编辑的区域。用户可以改变元素的内容以及操作标记。
+
+      <li><p>Web开发者定义的 <code class="external" title="attr-data-*"><a href="http://www.w3.org/TR/html5/single-page.html#attr-data-*">data-<var>*</var></a></code> 集合。Web开发者可以定义他们想要的任何属性只要他们在其之前加上 <code>data-</code> 前缀来避免与将来版本的HTML的冲突。这些属性是用作存储Web页面或应用自身消耗的自定义数据的。而<em>不是</em>用来给其他各方(比如用户代理)消耗的。
+      
+      <li><p><code class="external" title="attr-hidden"><a href="http://www.w3.org/TR/html5/single-page.html#the-hidden-attribute">hidden</a></code> 属性表示一个元素尚未，或不再有所关联
+
+      <li><p><code class="external" title="wai-aria"><a href="http://www.w3.org/TR/html5/single-page.html#wai-aria">role</a></code> 和 <code class="external" title="wai-aria"><a href="http://www.w3.org/TR/html5/single-page.html#wai-aria">aria-<var>*</var></a></code> 集合属性用来指导辅助技术。
+
+      <li><p><code class="external" title="attr-spellcheck"><a href="http://www.w3.org/TR/html5/single-page.html#attr-spellcheck">spellcheck</a></code> 属性允许暗示是否内容可以被拼写检查。
+
+      <li><p><code class="external" title="attr-translate"><a href="http://www.w3.org/TR/html5/single-page.html#attr-translate">translate</a></code> 属性给了翻译器内容是否应该被翻译的提示。
+
+    </ul>
+
+    <p>HTML也使得所有来自HTML4的事件处理属性（那些形如 <code>on<var>event</var></code> 的属性）变成全局属性，并为其定义的新的事件添加了几个新的时间处理属性。比如，媒体元素(<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-video-element">video</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-audio-element">audio</a></code>)API所使用的 <code class="external" title="event-media-play"><a href="http://www.w3.org/TR/html5/single-page.html#event-media-play">play</a></code> 事件的 <code class="external" title="handler-onplay"><a href="http://www.w3.org/TR/html5/single-page.html#handler-onplay">onplay</a></code> 事件处理器。规范有一份<a href="http://www.w3.org/TR/html5/single-page.html#events-0">所有事件的索引</a>。</p>
+
+
+    <h3 id="changed-elements"><span class="secno">3.3 </span>变更的元素</h3>
+
+    <p>这些元素在HTML里被略微修改了含义，这是为了更好的反应它们如何被使用在Web上或者让它们变得更有用：</p>
+
+    <ul>
+      <!--
+      <li><p>The <code data-anolis-spec=html>a</code> element without an
+      <code data-anolis-spec=html title=attr-hyperlink-href>href</code>
+      attribute now represents a placeholder for where a link otherwise
+      might have been placed.</p></li>
+
+      html4:
+      Each  A element defines an anchor
+
+      1. The  A element's content defines the position of the anchor.
+      2. The  name attribute names the anchor so that it may be the destination
+      of zero or more links (see also anchors with  id).
+      3. The  href attribute makes this anchor the source anchor of exactly one
+      link.
+
+      Authors may also create an A element that specifies no anchors, i.e., that
+      doesn't specify href, name, or id. Values for these attributes may be set
+      at a later time through scripts.
+
+      html:
+      If the a element has an href attribute, then it represents a hyperlink (a
+      hypertext anchor).
+
+      If the a element has no href attribute, then the element represents a
+      placeholder for where a link might otherwise have been placed, if it had
+      been relevant.
+
+      Both basically say that <a> without href is a "placeholder", so this isn't
+      really a change.
+      -->
+
+      <!--
+      <li><p>The <code data-anolis-spec=html>abbr</code> element now represents
+      an abbreviation <em>or</em> an acronym.
+
+      html4:
+      Indicates an abbreviated form (e.g., WWW, HTTP, URI, Mass., etc.).
+
+      html:
+      The abbr element represents an abbreviation or acronym, optionally with
+      its expansion.
+
+      Not a major change (technically acronym is a form of abbreviation anyway),
+      and this document says to use abbr instead of acronym already.
+      -->
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-address-element">address</a></code> 元素现在被最近的祖先 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-article-element">article</a></code> 或 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-body-element">body</a></code> 元素限定了作用范围。</li>
+
+      <!--
+      AREA
+      html4 doesn't really have a definition of area, but html does, but that's
+      hardly worth calling out here.
+      -->
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-b-element">b</a></code> 元素现在代表一段文本，这段文本仅仅出于功利的目的被提请注意，这种目的里没有传达任何额外的重要性，也没有交替的语言和心情的意味，比如文档摘要的关键字，审查中的产品名，文本驱动的交互软件的可操作词，或文章的导引。</li>
+
+      <!--
+      BASE
+      html4:
+      The BASE element allows authors to specify a document's base URI
+      explicitly.
+
+      html:
+      The base element allows authors to specify the document base URL for the
+      purposes of resolving relative URLs, and the name of the default browsing
+      context for the purposes of following hyperlinks. The element does not
+      represent any content beyond this information.
+      -->
+
+      <!--
+      BDO
+      html4:
+      The BDO element allows authors to turn off the bidirectional algorithm for
+      selected fragments of text.
+
+      html:
+      The bdo element represents explicit text directionality formatting control
+      for its children. It allows authors to override the Unicode bidirectional
+      algorithm by explicitly specifying a direction override.
+      -->
+
+      <!--
+      <li><p>The <code data-anolis-spec=html>blockquote</code> element now
+      represents a section that is quoted <em>from another source</em> (and that
+      is not necessarily "long").
+
+      html4:
+      These two elements designate quoted text.  BLOCKQUOTE is for long
+      quotations (block-level content)
+
+      html:
+      The blockquote element represents a section that is quoted from another
+      source.
+      -->
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-blockquote-element">blockquote</a></code>元素仍旧代表从引自其他来源的内容，但现在也允许包含在 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-footer-element">footer</a></code> 或 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-cite-element">cite</a></code>元素中的引文，以及行间的变化比如注解和缩写。</li>
+
+      <!--
+      BODY
+      html4:
+      The body of a document contains the document's content.
+
+      html:
+      The body element represents the main content of the document.
+      -->
+
+      <!--
+      BR
+      html4:
+      The  BR element forcibly breaks (ends) the current line of text.
+
+      html:
+      The br element represents a line break.
+      -->
+
+      <!--
+      BUTTON
+      html4:
+      Buttons created with the BUTTON element function just like buttons created
+      with the INPUT element
+      html:
+      The button element represents a button.
+      -->
+
+      <!--
+      CAPTION
+      html4:
+      When present, the CAPTION element's text should describe the nature of the
+      table.
+
+      html:
+      The caption element represents the title of the table that is its parent,
+      if it has a parent and that is a table element.
+      -->
+
+
+
+      <!--
+      CODE
+      html4:
+      Designates a fragment of computer code.
+      html:
+      The code element represents a fragment of computer code.
+      -->
+
+      <!--
+      COL
+      html4:
+      The  COL element allows authors to group together attribute specifications
+      for table columns.
+
+      html:
+      If a col element has a parent and that is a colgroup element that itself
+      has a parent that is a table element, then the col element represents one
+      or more columns in the column group represented by that colgroup.
+      -->
+
+      <!--
+      COLGROUP
+      html4:
+      The  COLGROUP element creates an explicit column group.
+
+      html:
+      The colgroup element represents a group of one or more columns in the
+      table that is its parent, if it has a parent and that is a table element.
+      -->
+
+      <!--
+      DD
+      covered by dl
+      -->
+
+      <!--
+      DEL
+      html4:
+      INS and DEL are used to markup sections of the document that have been
+      inserted or deleted with respect to a different version of a document
+
+      html:
+      The del element represents a removal from the document.
+      -->
+
+      <!--
+      DFN
+      html4:
+      Indicates that this is the defining instance of the enclosed term.
+
+      html:
+      The dfn element represents the defining instance of a term.
+      -->
+
+      <!--
+      DIV
+      html4:
+      The  DIV and SPAN elements, in conjunction with the id and  class
+      attributes, offer a generic mechanism for adding structure to documents.
+      These elements define content to be inline (SPAN) or block-level (DIV) but
+      impose no other presentational idioms on the content. Thus, authors may
+      use these elements in conjunction with style sheets, the lang attribute,
+      etc., to tailor HTML to their own needs and tastes.
+
+      html:
+      The div element has no special meaning at all. It represents its children.
+      It can be used with the class, lang, and title attributes to mark up
+      semantics common to a group of consecutive elements.
+      -->
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-dl-element">dl</a></code> 元素现在代表一组名称-值的关联列表，并且不再适用于对话。</li>
+
+      <!--
+      DT
+      covered by dl
+      -->
+
+      <!--
+      EM
+      html4:
+      Indicates emphasis.
+
+      html:
+      The em element represents stress emphasis of its contents.
+      -->
+
+      <!--
+      FIELDSET
+      html4:
+      The FIELDSET element allows authors to group thematically related controls
+      and labels.
+
+      html:
+      The fieldset element represents a set of form controls optionally grouped
+      under a common name.
+      -->
+
+      <!--
+      FORM
+      html4:
+      The  FORM element acts as a container for  controls.
+
+      html:
+      The form element represents a collection of form-associated elements, some of which can represent editable values that can be submitted to a server for processing.
+      -->
+
+      <!--
+      <li><p>The <code data-anolis-spec=html>h1</code>-<code
+      data-anolis-spec=html>h6</code> elements in HTML4 are said to have
+      different importance. In HTML, they are said to have different <span
+      data-anolis-spec=html>ranks</span>, which affect the outline algorithm,
+      but do not affect importance.
+
+      html4:
+      A heading element briefly describes the topic of the section it
+      introduces. Heading information may be used by user agents, for example,
+      to construct a table of contents for a document automatically.
+
+      There are six levels of headings in HTML with H1 as the most important and
+      H6 as the least. Visual browsers usually render more important headings in
+      larger fonts than less important ones.
+
+      html:
+      These elements represent headings for their sections.
+
+      The semantics and meaning of these elements are defined in the section on
+      headings and sections.
+
+      These elements have a rank given by the number in their name. The h1
+      element is said to have the highest rank, the h6 element has the lowest
+      rank, and two elements with the same name have equal rank.
+
+      well, they intend the same semantics, basically.
+      -->
+
+      <!--
+      HEAD
+      html4:
+      The  HEAD element contains information about the current document, such as
+      its title, keywords that may be useful to search engines, and other data
+      that is not considered document content.
+
+      html:
+      The head element represents a collection of metadata for the Document.
+      -->
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-hr-element">hr</a></code> 元素现在代表一个段级专题间断(paragraph-level thematic break)。
+
+      <!--
+      HTML
+      html4:
+      After document type declaration, the remainder of an HTML document is
+      contained by the HTML element.
+
+      html:
+      The html element represents the root of an HTML document.
+      -->
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-i-element">i</a></code> 元素现在代表一段有着交替的语言和心情意味的文本，或者，以表明一种不同的文本质量的方式偏离平常的散文，比如分类命名，技术术语，其它语言的惯用短语，一个念头，或西文的船名。</li>
+
+      <!--
+      IFRAME
+      html4:
+      The  IFRAME element allows authors to insert a frame within a block of
+      text. Inserting an inline frame within a section of text is much like
+      inserting an object via the OBJECT element: they both allow you to insert
+      an HTML document in the middle of another, they may both be aligned with
+      surrounding text, etc.
+
+      html:
+      The iframe element represents a nested browsing context.
+      -->
+
+      <!--
+      IMG
+      html4:
+      The  IMG element embeds an image in the current document at the location
+      of the element's definition.
+
+      html:
+      An img element represents an image.
+      -->
+
+      <!--
+      INPUT
+
+      type         html4         html
+      text         Creates a single-line text input control.
+                                 Text with no line breaks; A text field. The
+                                 input element represents a one line plain text
+                                 edit control for the element's value.
+      password     Like "text", but the input text is rendered in such a way as
+                   to hide the characters
+                                 Text with no line breaks (sensitive
+                                 information); A text field that obscures data
+                                 entry. The input element represents a one line
+                                 plain text edit control for the element's
+                                 value. The user agent should obscure the value
+                                 so that people other than the user cannot see
+                                 it.
+      checkbox     Checkboxes are on/off switches that may be toggled by the
+                   user.
+                                 A set of zero or more values from a predefined
+                                 list; A checkbox. The input element represents
+                                 a two-state control that represents the
+                                 element's checkedness state.
+      radio        Radio buttons are like checkboxes except that when several
+                   share the same control name, they are mutually exclusive
+                                 An enumerated value; A radio button. The input
+                                 element represents a control that, when used in
+                                 conjunction with other input elements, forms a
+                                 radio button group in which only one control
+                                 can have its checkedness state set to true.
+      submit       When activated, a submit button submits a form. A form may
+                   contain more than one submit button.
+                                 An enumerated value, with the extra semantic
+                                 that it must be the last value selected and
+                                 initiates form submission; A button. The input
+                                 element represents a button that, when
+                                 activated, submits the form.
+      image        Creates a graphical submit button.
+                                 A coordinate, relative to a particular image's
+                                 size, with the extra semantic that it must be
+                                 the last value selected and initiates form
+                                 submission; Either a clickable image, or a
+                                 button. The input element represents either an
+                                 image from which a user can select a coordinate
+                                 and submit the form, or alternatively a button
+                                 from which the user can submit the form. The
+                                 element is a button, specifically a submit
+                                 button.
+      reset        When activated, a reset button resets all controls to their
+                   initial values.
+                                 n/a; A button. The input element represents a
+                                 button that, when activated, resets the form.
+      button       Push buttons have no default behavior.
+                                 n/a; A button. The input element represents a
+                                 button with no default behavior.
+      hidden       Authors may create controls that are not rendered but whose
+                   values are submitted with a form. Authors generally use this
+                   control type to store information between client/server
+                   exchanges that would otherwise be lost due to the stateless
+                   nature of HTTP (see [RFC2616]). The INPUT element is used to
+                   create a hidden control.
+                                 An arbitrary string; n/a. The input element
+                                 represents a value that is not intended to be
+                                 examined or manipulated by the user.
+      file         This control type allows the user to select files so that
+                   their contents may be submitted with a form. The INPUT
+                   element is used to create a file select control.
+                                 Zero or more files each with a MIME type and
+                                 optionally a file name; A label and a button.
+                                 The input element represents a list of selected
+                                 files, each file consisting of a file name, a
+                                 file type, and a file body (the contents of the
+                                 file).
+      -->
+
+      <!--
+      INS
+      see DEL above
+      -->
+
+      <!--
+      KBD
+      html4:
+      Indicates text to be entered by the user.
+
+      html:
+      The kbd element represents user input (typically keyboard input, although
+      it may also be used to represent other input, such as voice commands).
+      -->
+
+      <li><p>对于 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-label-element">label</a></code> 元素，浏览器不应该再将焦点从标签移动到控件上，除非这种行为对于底层平台的用户界面是标准的。</li>
+
+      <!--
+      LEGEND
+      html4:
+      The  LEGEND element allows authors to assign a caption to a  FIELDSET.
+
+      html:
+      The legend element represents a caption for the rest of the contents of
+      the legend element's parent fieldset element, if any.
+      -->
+
+      <!--
+      LI
+      html4:
+      Both types of lists are made up of sequences of list items defined by the
+      LI element
+
+      html:
+      The li element represents a list item.
+      -->
+
+      <!--
+      LINK
+      html4:
+      This element defines a link.
+
+      html:
+      The link element allows authors to link their document to other resources.
+      -->
+
+      <!--
+      MAP
+      html4:
+      The  MAP element specifies a client-side image map (or other navigation
+      mechanism)
+
+      html:
+      The map element, in conjunction with any area element descendants, defines
+      an image map. The element represents its children.
+      -->
+
+
+
+      <!--
+      META
+      html4:
+      The  META element can be used to identify properties of a document (e.g.,
+      author, expiration date, a list of key words, etc.) and assign values to
+      those properties.
+
+      html:
+      The meta element represents various kinds of metadata that cannot be
+      expressed using the title, base, link, style, and script elements.
+      -->
+
+      <li><p>当用户代理不支持之前文档里中的 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-script-element">script</a></code> 元素所调用的脚本语言时，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-noscript-element">noscript</a></code> 不再被渲染。
+
+      <!--
+      OBJECT
+      html4:
+      The  OBJECT element allows authors to control whether data should be
+      rendered externally or by some program, specified by the author, that
+      renders the data within the user agent.
+
+      html:
+      The object element can represent an external resource, which, depending on
+      the type of the resource, will either be treated as an image, as a nested
+      browsing context, or as an external resource to be processed by a plugin.
+      -->
+
+      <!--
+      OL
+      html4:
+      Ordered and unordered lists are rendered in an identical manner except
+      that visual user agents number ordered list items. User agents may present
+      those numbers in a variety of ways. Unordered list items are not numbered.
+
+      html:
+      The ol element represents a list of items, where the items have been
+      intentionally ordered, such that changing the order would change the
+      meaning of the document.
+      -->
+
+      <!--
+      OPTGROUP
+      html4:
+      The OPTGROUP element allows authors to group choices logically.
+
+      html:
+      The optgroup element represents a group of option elements with a common
+      label.
+      -->
+
+      <!--
+      OPTION
+      html4:
+      Each choice offered by the menu is represented by an OPTION element.
+
+      html:
+      The option element represents an option in a select element ...
+      -->
+
+      <!--
+      P
+      html4:
+      The  P element represents a paragraph.
+
+      html:
+      The p element represents a paragraph.
+      -->
+
+      <!--
+      PARAM
+      html4:
+      PARAM elements specify a set of values that may be required by an object
+      at run-time.
+
+      html:
+      The param element defines parameters for plugins invoked by object
+      elements. It does not represent anything on its own.
+      -->
+
+      <!--
+      PRE
+      html4:
+      The  PRE element tells visual user agents that the enclosed text is
+      "preformatted".
+
+      html:
+      The pre element represents a block of preformatted text, in which
+      structure is represented by typographic conventions rather than by
+      elements.
+      -->
+
+      <!--
+      Q
+      html4:
+      These two elements designate quoted text.  ... Q is intended for short
+      quotations (inline content) that don't require paragraph breaks.
+
+      html:
+      The q element represents some phrasing content quoted from another source.
+      -->
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-s-element">s</a></code> 元素现在代表内容不再准确或不再有关联。</li>
+
+      <!--
+      SAMP
+      html4:
+      Designates sample output from programs, scripts, etc.
+
+      html:
+      The samp element represents (sample) output from a program or computing
+      system.
+      -->
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-script-element">script</a></code> 元素现在可以被用作脚本或者自定义数据块。
+
+      <!--
+      SELECT
+      html4:
+      The  SELECT element creates a menu. Menus offer users options from which
+      to choose.
+
+      html:
+      The select element represents a control for selecting amongst a set of
+      options.
+      -->
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-small-element">small</a></code> 元素现在代表侧边注释的小字。</li>
+
+      <!--
+      SPAN
+      html4:
+      The  DIV and SPAN elements, in conjunction with the id and  class
+      attributes, offer a generic mechanism for adding structure to documents.
+      These elements define content to be inline (SPAN) or block-level (DIV) but
+      impose no other presentational idioms on the content. Thus, authors may
+      use these elements in conjunction with style sheets, the lang attribute,
+      etc., to tailor HTML to their own needs and tastes.
+
+      html:
+      The span element doesn't mean anything on its own, but can be useful when
+      used together with the global attributes, e.g. class, lang, or dir. It
+      represents its children.
+      -->
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-strong-element">strong</a></code> 元素现在代表重要性而不是强烈的强调。</li>
+
+      <!--
+      STYLE
+      html4:
+      The  STYLE element allows authors to put style sheet rules in the head of
+      the document.
+
+      html:
+      The style element allows authors to embed style information in their
+      documents. The style element is one of several inputs to the styling
+      processing model. The element does not represent content for the user.
+      -->
+
+      <!--
+      SUB and SUP
+      html4:
+      Many scripts (e.g., French) require superscripts or subscripts for proper
+      rendering. The  SUB and SUP elements should be used to markup text in
+      these cases.
+
+      html:
+      The sup element represents a superscript and the sub element represents a
+      subscript.
+      -->
+
+      <!--
+      TABLE
+      html4:
+      The  TABLE element contains all other elements that specify caption, rows,
+      content, and formatting.
+
+      html:
+      The table element represents data with more than one dimension, in the
+      form of a table.
+      -->
+
+      <!--
+      TBODY
+      html4:
+      The table body should contain rows of table data.
+
+      html:
+      The tbody element represents a block of rows that consist of a body of
+      data for the parent table element, if the tbody element has a parent and
+      it is a table.
+      -->
+
+      <!--
+      TD
+      html4:
+      The  TD element defines a cell that contains data.
+
+      html:
+      The td element represents a data cell in a table.
+      -->
+
+      <!--
+      TEXTAREA
+      html4:
+      The  TEXTAREA element creates a  multi-line text input control. User
+      agents should use the contents of this element as the initial value of
+      the control and should render this text initially.
+
+      html:
+      The textarea element represents a multiline plain text edit control for
+      the element's raw value. The contents of the control represent the control's default value.
+      -->
+
+      <!--
+      TFOOT
+      html4:
+      The table head and table foot should contain information about the table's
+      columns.
+
+      html:
+      The tfoot element represents the block of rows that consist of the column
+      summaries (footers) for the parent table element, if the tfoot element has
+      a parent and it is a table.
+      -->
+
+      <!--
+      TH
+      html4:
+      The  TH element defines a cell that contains header information.
+
+      html:
+      The th element represents a header cell in a table.
+      -->
+
+      <!--
+      THEAD
+      html4:
+      The table head and table foot should contain information about the table's columns.
+
+      html:
+      The thead element represents the block of rows that consist of the column
+      labels (headers) for the parent table element, if the thead element has a
+      parent and it is a table.
+      -->
+
+      <!--
+      TITLE
+      html4:
+      Authors should use the TITLE element to identify the contents of a
+      document. Since users often consult documents out of context, authors
+      should provide context-rich titles.
+
+      html:
+      The title element represents the document's title or name. Authors should
+      use titles that identify their documents even when they are used out of
+      context, for example in a user's history or bookmarks, or in search
+      results.
+      -->
+
+      <!--
+      TR
+      html4:
+      The  TR elements acts as a container for a row of table cells.
+
+      html:
+      The tr element represents a row of cells in a table.
+      -->
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-u-element">u</a></code> 元素现在代表一段文本，带着虽然明白地被呈现却不怎么准确的非文本的注解。比如专名号，或者拼错的标签文本。</li>
+
+      <!--
+      UL
+      html4:
+      Ordered and unordered lists are rendered in an identical manner except
+      that visual user agents number ordered list items. User agents may present
+      those numbers in a variety of ways. Unordered list items are not numbered.
+
+      html:
+      The ul element represents a list of items, where the order of the items is
+      not important — that is, where changing the order would not materially
+      change the meaning of the document.
+      -->
+
+      <!--
+      VAR
+      html4:
+      Indicates an instance of a variable or program argument.
+
+      html:
+      The var element represents a variable. This could be an actual variable in
+      a mathematical expression or programming context, an identifier
+      representing a constant, a function parameter, or just be a term used as a
+      placeholder in prose.
+      -->
+
+    </ul>
+
+
+    <h3 id="changed-attributes"><span class="secno">3.4 </span>变更的属性</h3>
+
+    <p>一些属性以各种方式发生了变化。</p>
+
+    <ul>
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code> 
+      元素的 <code class="external" title="attr-img-alt"><a href="http://www.w3.org/TR/html5/single-page.html#attr-img-alt">alt</a></code>
+      属性有了更多描述性要求，并且在一些情况下可以被忽略。详情参阅<a href="http://www.w3.org/TR/html5/single-page.html#alt">规范</a>。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code> 的 <code class="external" title="attr-input-accept"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-accept">accept</a></code>
+      属性现在允许值 <code>audio/*</code>, <code>video/*</code> 和 <code>image/*</code>。
+
+      <li><p>全局属性 <code class="external" title="attr-accesskey"><a href="http://www.w3.org/TR/html5/single-page.html#the-accesskey-attribute">accesskey</a></code> 现在允许指定多字符，而用户代理能从其中选择。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-form-element">form</a></code> 的 <code class="external" title="attr-fs-action"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-action">action</a></code> 属性不再允许有空URL。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code> 的 <code class="external" title="attr-table-border"><a href="http://www.w3.org/TR/html5/single-page.html#attr-table-border">border</a></code> 属性只允许值为"1"以及空字符。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-td-element">td</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-th-element">th</a></code> 的 <code class="external" title="attr-tdth-colspan"><a href="http://www.w3.org/TR/html5/single-page.html#attr-tdth-colspan">colspan</a></code> 属性现在必须大于零。
+
+      <li><p>当元素为圆的状态时，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-area-element">area</a></code> 的 <code class="external" title="attr-area-coords"><a href="http://www.w3.org/TR/html5/single-page.html#attr-area-coords">coords</a></code> 属性不再允许半径的百分比值。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code> 的 <code class="external" title="attr-object-data"><a href="http://www.w3.org/TR/html5/single-page.html#attr-object-data">data</a></code> 属性不再相对于 <code class="external" title="attr-object-codebase"><a href="http://www.w3.org/TR/html5/single-page.html#attr-object-codebase">codebase</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-script-element">script</a></code> 的 <code class="external" title="attr-script-defer"><a href="http://www.w3.org/TR/html5/single-page.html#attr-script-defer">defer</a></code> 属性现在明确地使脚本在页面完成解析时执行。
+
+      <li><p>全局属性 <code class="external" title="attr-dir"><a href="http://www.w3.org/TR/html5/single-page.html#the-dir-attribute">dir</a></code> 现在允许值 <code>auto</code>。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-form-element">form</a></code> 的 <code class="external" title="attr-fs-enctype"><a href="http://www.w3.org/TR/html5/single-page.html#attr-fs-enctype">enctype</a></code> 属性现在支持值 <code>text/plain</code>。
+
+      <li><p>不再允许 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-iframe-element">iframe</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code> 的 <code class="external" title="attr-dim-width"><a href="http://www.w3.org/TR/html5/single-page.html#attr-dim-width">width</a></code>
+      和 <code class="external" title="attr-dim-height"><a href="http://www.w3.org/TR/html5/single-page.html#attr-dim-height">height</a></code>
+      属性包含百分比。也不允许使用它们将图片从固有的高宽比拉伸到另一个不同的高宽比。</p>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-link-element">link</a></code> 的 <code class="external" title="attr-link-href"><a href="http://www.w3.org/TR/html5/single-page.html#attr-link-href">href</a></code> 属性不再允许有空URL。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-base-element">base</a></code> 的 <code class="external" title="attr-base-href"><a href="http://www.w3.org/TR/html5/single-page.html#attr-base-href">href</a></code> 属性现在允许相对URL。
+
+      <li><p>如果文档的编码是UTF-8或UTF-16，所有采用URL的属性，比如，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-a-element">a</a></code> 元素的 <code class="external" title="attr-hyperlink-href"><a href="http://www.w3.org/TR/html5/single-page.html#attr-hyperlink-href">href</a></code> 属性，现在支持IRI。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-meta-element">meta</a></code> 的 <code class="external" title="attr-meta-http-equiv"><a href="http://www.w3.org/TR/html5/single-page.html#attr-meta-http-equiv">http-equiv</a></code> 属性不再表示被HTTP服务器用来在HTTP响应中创建HTTP头，而是，表示被用户代理所使用的指令。
+
+      <li><p>全局属性 <code class="external" title="attr-id"><a href="http://www.w3.org/TR/html5/single-page.html#the-id-attribute">id</a></code> 现在允许任意值，只要是唯一的，不为空的字符串，并且不包含空格字符。
+
+      <li><p>全局属性 <code class="external" title="attr-lang"><a href="http://www.w3.org/TR/html5/single-page.html#attr-lang">lang</a></code> 除了接受有效的语言标识符以外，还能接受空字符串，就如同XML中的 <code>xml:lang</code> 一样。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-link-element">link</a></code> 的 <code class="external" title="attr-link-media"><a href="http://www.w3.org/TR/html5/single-page.html#attr-link-media">media</a></code> 属性现在接受一个媒体查询列表并且默认为"all"。
+
+      <li><p>事件处理器属性(比如，<code class="external" title="handler-onclick"><a href="http://www.w3.org/TR/html5/single-page.html#handler-onclick">onclick</a></code>)现在总使用JavaScript作为脚本语言。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-li-element">li</a></code> 元素的 <code class="external" title="attr-li-value"><a href="http://www.w3.org/TR/html5/single-page.html#attr-li-value">value</a></code> 属性不再被废弃，因为它不是样式性的属性。<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-ol-element">ol</a></code> 元素的 <code class="external" title="attr-ol-start"><a href="http://www.w3.org/TR/html5/single-page.html#attr-ol-start">start</a></code> 和 <code class="external" title="attr-ol-type"><a href="http://www.w3.org/TR/html5/single-page.html#attr-ol-type">type</a></code> 属性也是一样的情况。
+
+      <li><p>全局属性 <code class="external" title="attr-style"><a href="http://www.w3.org/TR/html5/single-page.html#the-style-attribute">style</a></code> 现在总使用CSS作为样式语言。
+
+      <li><p>全局属性 <code class="external" title="attr-tabindex"><a href="http://www.w3.org/TR/html5/single-page.html#attr-tabindex">tabindex</a></code> 现在允许负值，其表示元素可以接受聚焦但是不能由tab切换到。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-a-element">a</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-area-element">area</a></code> 元素的 <code class="external" title="attr-hyperlink-target"><a href="http://www.w3.org/TR/html5/single-page.html#attr-hyperlink-target">target</a></code> 属性不再被废弃，因为它在Web应用中很有用，比如，在配合 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-iframe-element">iframe</a></code> 时。
+
+      <li><p>如果脚本语言和样式语言分别是JavaScript和CSS，那么 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-script-element">script</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-style-element">style</a></code> 的 <code class="external" title="attr-script-type"><a href="http://www.w3.org/TR/html5/single-page.html#attr-script-type">type</a></code> 属性不再是必须的。</p>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code> 的 <code class="external" title="attr-hyperlink-usemap"><a href="http://www.w3.org/TR/html5/single-page.html#attr-hyperlink-usemap">usemap</a></code> 属性不再接受URL，而是接受一个 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-map-element">map</a></code> 元素的有效哈希名引用(<a class="external" href="http://www.w3.org/TR/html5/single-page.html#valid-hash-name-reference">valid hash-name reference</a>)。
+      
+    </ul>
+
+
+    <h3 id="obsolete-elements"><span class="secno">3.5 </span>废弃的元素</h3>
+
+    <p>Web开发者不该再使用这个小节里的元素。但用户代理将仍然支持它们，HTML的几个小节定义了如何支持它们。比如，废弃的 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#isindex-0">isindex</a></code> 元素由解析器部分处理。</p>
+
+    <p>下面的元素不在HTML内，因为它们的作用纯粹是表象(样式)作用，CSS能更好的处理它们的功能。</p>
+
+    <ul class="brief">
+      <li><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#basefont">basefont</a></code>
+
+      <li><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#big">big</a></code>
+
+      <li><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#center">center</a></code>
+
+      <li><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#font">font</a></code>
+
+      <li><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#strike">strike</a></code>
+
+      <li><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#tt">tt</a></code>
+    </ul>
+
+    <p>下面的元素不在HTML内，因为使用它们会破坏可用性和可访问性。</p>
+
+    <ul class="brief">
+      <li><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#frame">frame</a></code>
+
+      <li><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#frameset">frameset</a></code>
+
+      <li><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#noframes">noframes</a></code>
+    </ul>
+
+    <p>不包含下面的元素是因为它们甚少被使用，造成混淆，或者它们的功能能被其他元素处理。</p>
+
+    <ul>
+      <li><p>不包含 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#acronym">acronym</a></code> 因为它造成了大量的混淆，Web开发者可以用 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-abbr-element">abbr</a></code> 表示缩写。</li>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-applet-element">applet</a></code> 已经被废弃，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code> 是更好的选择。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#isindex-0">isindex</a></code> 可以被表单控制代替。
+
+      <li><p><code class="external" title="attr-dir"><a href="http://www.w3.org/TR/html5/single-page.html#the-dir-attribute">dir</a></code> 已经被废弃，更赞同使用 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-ul-element">ul</a></code>。
+    </ul>
+
+    <p>最后，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-noscript-element">noscript</a></code> 元素只符合HTML语法。XML语法不允许使用。这是因为，为了不仅要视觉上隐藏还要阻止内容运行脚本，应用样式，控制可提交的表单，加载资源等等，HTML解析器将 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-noscript-element">noscript</a></code> 元素的内容作为纯文本解析。同样的做法在XML解析器中是不可能的。
+
+
+    <h3 id="obsolete-attributes"><span class="secno">3.6 </span>废弃的属性</h3>
+
+    <p>一些来自HTML4的属性在HTML中不再被允许使用。规范定义了用户代理应该如何在遗留文档里处理它们，但是它们并不是有效的，Web开发者绝不能再使用它们。</p>
+
+    <p>HTML对你使用什么来代替它们<a class="external" href="http://www.w3.org/TR/html5/single-page.html#non-conforming-features" title="non-conforming features">有些建议</a>。</p>
+
+    <ul>
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-link-element">link</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-a-element">a</a></code> 的 <code title="">rev</code> 和 <code class="external" title="attr-a-charset"><a href="http://www.w3.org/TR/html5/single-page.html#attr-a-charset">charset</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-a-element">a</a></code> 的 <code class="external" title="attr-a-shape"><a href="http://www.w3.org/TR/html5/single-page.html#attr-a-shape">shape</a></code> 和 <code class="external" title="attr-a-coords"><a href="http://www.w3.org/TR/html5/single-page.html#attr-a-coords">coords</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-iframe-element">iframe</a></code> 的 <code title="">longdesc</code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-link-element">link</a></code> 的 <code class="external" title="attr-link-target"><a href="http://www.w3.org/TR/html5/single-page.html#attr-link-target">target</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-area-element">area</a></code> 的 <code class="external" title="attr-area-nohref"><a href="http://www.w3.org/TR/html5/single-page.html#attr-area-nohref">nohref</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-head-element">head</a></code> 的 <code class="external" title="attr-head-profile"><a href="http://www.w3.org/TR/html5/single-page.html#attr-head-profile">profile</a></code> 属性。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-html-element">html</a></code> 的 <code class="external" title="attr-html-version"><a href="http://www.w3.org/TR/html5/single-page.html#attr-html-version">version</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code> 的 <code class="external" title="attr-img-name"><a href="http://www.w3.org/TR/html5/single-page.html#attr-img-name">name</a></code> 属性 (使用 <code class="external" title="attr-id"><a href="http://www.w3.org/TR/html5/single-page.html#the-id-attribute">id</a></code> 替代)。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-meta-element">meta</a></code> 的 <code class="external" title="attr-meta-scheme"><a href="http://www.w3.org/TR/html5/single-page.html#attr-meta-scheme">scheme</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code> 的 <code class="external" title="attr-object-archive"><a href="http://www.w3.org/TR/html5/single-page.html#attr-object-archive">archive</a></code>, <code class="external" title="attr-object-classid"><a href="http://www.w3.org/TR/html5/single-page.html#attr-object-classid">classid</a></code>, <code class="external" title="attr-object-codebase"><a href="http://www.w3.org/TR/html5/single-page.html#attr-object-codebase">codebase</a></code>, <code class="external" title="attr-object-codetype"><a href="http://www.w3.org/TR/html5/single-page.html#attr-object-codetype">codetype</a></code>, <code class="external" title="attr-object-declare"><a href="http://www.w3.org/TR/html5/single-page.html#attr-object-declare">declare</a></code> 和 <code class="external" title="attr-object-standby"><a href="http://www.w3.org/TR/html5/single-page.html#attr-object-standby">standby</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-param-element">param</a></code> 的 <code class="external" title="attr-param-valuetype"><a href="http://www.w3.org/TR/html5/single-page.html#attr-param-valuetype">valuetype</a></code> 和 <code class="external" title="attr-param-type"><a href="http://www.w3.org/TR/html5/single-page.html#attr-param-type">type</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-td-element">td</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-th-element">th</a></code> 的 <code class="external" title="attr-tdth-axis"><a href="http://www.w3.org/TR/html5/single-page.html#attr-tdth-axis">axis</a></code> 属性。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-td-element">td</a></code> 的 <code title="">abbr</code> 和 <code class="external" title="attr-td-scope"><a href="http://www.w3.org/TR/html5/single-page.html#attr-td-scope">scope</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code> 的 <code class="external" title="attr-table-summary"><a href="http://www.w3.org/TR/html5/single-page.html#attr-table-summary">summary</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-form-element">form</a></code> 的 <code class="external" title="attr-form-accept"><a href="http://www.w3.org/TR/html5/single-page.html#attr-form-accept">accept</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code> 的 <code class="external" title="attr-input-usemap"><a href="http://www.w3.org/TR/html5/single-page.html#attr-input-usemap">usemap</a></code> 属性。
+    </ul>
+
+    <p>此外，HTML没有一个HTML4中的表象(样式)属性，因为CSS能更好的处理它们的功能。</p>
+
+    <ul>
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-caption-element">caption</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-iframe-element">iframe</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-legend-element">legend</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-hr-element">hr</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-div-element">div</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h1-element">h1</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h2-element">h2</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h3-element">h3</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h4-element">h4</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h5-element">h5</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h6-element">h6</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-p-element">p</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-col-element">col</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-colgroup-element">colgroup</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tbody-element">tbody</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-td-element">td</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tfoot-element">tfoot</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-th-element">th</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-thead-element">thead</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tr-element">tr</a></code> 的 <code class="external" title="attr-caption-align"><a href="http://www.w3.org/TR/html5/single-page.html#attr-caption-align">align</a></code> 属性。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-body-element">body</a></code> 的 <code class="external" title="attr-body-alink"><a href="http://www.w3.org/TR/html5/single-page.html#attr-body-alink">alink</a></code>, <code class="external" title="attr-body-link"><a href="http://www.w3.org/TR/html5/single-page.html#attr-body-link">link</a></code>, <code class="external" title="attr-body-text"><a href="http://www.w3.org/TR/html5/single-page.html#attr-body-text">text</a></code> 和 <code class="external" title="attr-body-vlink"><a href="http://www.w3.org/TR/html5/single-page.html#attr-body-vlink">vlink</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-body-element">body</a></code> 的 <code class="external" title="attr-background"><a href="http://www.w3.org/TR/html5/single-page.html#attr-background">background</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tr-element">tr</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-td-element">td</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-th-element">th</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-body-element">body</a></code> 的 <code class="external" title="attr-body-bgcolor"><a href="http://www.w3.org/TR/html5/single-page.html#attr-body-bgcolor">bgcolor</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code> 的 <code class="external" title="attr-object-border"><a href="http://www.w3.org/TR/html5/single-page.html#attr-object-border">border</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code> 的 <code class="external" title="attr-table-cellpadding"><a href="http://www.w3.org/TR/html5/single-page.html#attr-table-cellpadding">cellpadding</a></code> 和 <code class="external" title="attr-table-cellspacing"><a href="http://www.w3.org/TR/html5/single-page.html#attr-table-cellspacing">cellspacing</a></code> 属性。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-col-element">col</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-colgroup-element">colgroup</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tbody-element">tbody</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-td-element">td</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tfoot-element">tfoot</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-th-element">th</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-thead-element">thead</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tr-element">tr</a></code> 的 <code class="external" title="attr-col-char"><a href="http://www.w3.org/TR/html5/single-page.html#attr-col-char">char</a></code> 和 <code class="external" title="attr-col-charoff"><a href="http://www.w3.org/TR/html5/single-page.html#attr-col-charoff">charoff</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-br-element">br</a></code> 的 <code class="external" title="attr-br-clear"><a href="http://www.w3.org/TR/html5/single-page.html#attr-br-clear">clear</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-dl-element">dl</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-ol-element">ol</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-ul-element">ul</a></code> 的 <code class="external" title="attr-dl-compact"><a href="http://www.w3.org/TR/html5/single-page.html#attr-dl-compact">compact</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code> 的 <code class="external" title="attr-table-frame"><a href="http://www.w3.org/TR/html5/single-page.html#attr-table-frame">frame</a></code> 属性。
+
+      <li><p><code class="external" title="attr-iframe-frameborder"><a href="http://www.w3.org/TR/html5/single-page.html#attr-iframe-frameborder">iframe</a></code> 的 <code class="external" title="attr-iframe-frameborder"><a href="http://www.w3.org/TR/html5/single-page.html#attr-iframe-frameborder">frameborder</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-td-element">td</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-th-element">th</a></code> 的 <code class="external" title="attr-tdth-height"><a href="http://www.w3.org/TR/html5/single-page.html#attr-tdth-height">height</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code> 的 <code class="external" title="attr-img-hspace"><a href="http://www.w3.org/TR/html5/single-page.html#attr-img-hspace">hspace</a></code> 和 <code class="external" title="attr-img-vspace"><a href="http://www.w3.org/TR/html5/single-page.html#attr-img-vspace">vspace</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-iframe-element">iframe</a></code> 的 <code class="external" title="attr-iframe-marginheight"><a href="http://www.w3.org/TR/html5/single-page.html#attr-iframe-marginheight">marginheight</a></code> 和 <code class="external" title="attr-iframe-marginwidth"><a href="http://www.w3.org/TR/html5/single-page.html#attr-iframe-marginwidth">marginwidth</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-hr-element">hr</a></code> 的 <code class="external" title="attr-hr-noshade"><a href="http://www.w3.org/TR/html5/single-page.html#attr-hr-noshade">noshade</a></code> 属性。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-td-element">td</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-th-element">th</a></code> 的 <code class="external" title="attr-tdth-nowrap"><a href="http://www.w3.org/TR/html5/single-page.html#attr-tdth-nowrap">nowrap</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code> 的 <code class="external" title="attr-table-rules"><a href="http://www.w3.org/TR/html5/single-page.html#attr-table-rules">rules</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-iframe-element">iframe</a></code> 的 <code class="external" title="attr-iframe-scrolling"><a href="http://www.w3.org/TR/html5/single-page.html#attr-iframe-scrolling">scrolling</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-hr-element">hr</a></code> 的 <code class="external" title="attr-hr-size"><a href="http://www.w3.org/TR/html5/single-page.html#attr-hr-size">size</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-li-element">li</a></code>, 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-ul-element">ul</a></code> 的 <code class="external" title="attr-li-type"><a href="http://www.w3.org/TR/html5/single-page.html#attr-li-type">type</a></code> 属性。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-col-element">col</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-colgroup-element">colgroup</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tbody-element">tbody</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-td-element">td</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tfoot-element">tfoot</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-th-element">th</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-thead-element">thead</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tr-element">tr</a></code> 的 <code class="external" title="attr-col-valign"><a href="http://www.w3.org/TR/html5/single-page.html#attr-col-valign">valign</a></code> 属性。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-hr-element">hr</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-td-element">td</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-th-element">th</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-col-element">col</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-colgroup-element">colgroup</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-pre-element">pre</a></code> 的 <code class="external" title="attr-hr-width"><a href="http://www.w3.org/TR/html5/single-page.html#attr-hr-width">width</a></code> 属性。
+      
+    </ul>
+
+    <p>下面这些属性允许使用，但是不鼓励Web开发者使用它们，而是强烈鼓励使用替代的解决方案:</p>
+
+    <ul>
+     <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code> 的 <code class="external" title="attr-img-border"><a href="http://www.w3.org/TR/html5/single-page.html#attr-img-border">border</a></code> 属性。如果存在其值必须是"<code>0</code>"。Web开发者可以使用CSS代替。</li>
+
+     <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-script-element">script</a></code> 的 <code class="external" title="attr-script-language"><a href="http://www.w3.org/TR/html5/single-page.html#attr-script-language">language</a></code> 属性。如果存在其值必须是"<code>JavaScript</code>"(不区分大小写)，并且不能与 <code class="external" title="attr-script-type"><a href="http://www.w3.org/TR/html5/single-page.html#attr-script-type">type</a></code> 属性冲突。作者可以简单地忽略它，因为它没什么作用。</li>
+
+     <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-a-element">a</a></code> 的 <code class="external" title="attr-a-name"><a href="http://www.w3.org/TR/html5/single-page.html#attr-a-name">name</a></code> 属性。Web开发者可以使用 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-id-attribute">id</a></code> 属性代替。</li>
+    </ul>
+
+
+    <h2 id="content-model"><span class="secno">4 </span>内容模型</h2>
+
+    <p>内容模型定义了元素如何被嵌套 — 允许什么作为容器元素的子元素(或后代元素)。
+
+    <p>总的来说，HTML4有两种主要的元素类别，"行内(inline)"(比如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-span-element">span</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code>, text)和"块级(block-level)"(比如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-div-element">div</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-hr-element">hr</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code>)。还有一些元素不属于这两者。
+
+    <p>一些元素允许"行内"元素(例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-p-element">p</a></code>)，一些元素允许"块级"元素(例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-body-element">body</a></code>)，一些元素允许两者(例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-div-element">div</a></code>)， 而另一些元素两者都不允许但只允许特定的元素(比如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-dl-element">dl</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code>)，或者完全不允许任何子元素(例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-link-element">link</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-hr-element">hr</a></code>)。
+
+    <p>注意元素本身作为某个类别与元素有某个类别的内容模型之间的区别。比如，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-p-element">p</a></code> 元素自身是"块级"元素，但是有"行内"的内容模型。
+    
+    <p>使其更加混乱的是，HTML4在其严格(Strict)，过渡(Transitional)和框架集(Frameset)模式有不同的内容模型规则。比如，在严格模式里，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-body-element">body</a></code> 元素只允许"块级"元素，但是在过渡模式里，其允许"行内"和"块级"。
+
+    <p>还有让事情变的更混乱的是，CSS使用术语"块级元素(block-level element)"和"行级元素(inline-level element)"作为它的可视化格式模型，其与CSS的'display'属性相关且与HTML的内容模型规则无关。
+
+    <p>为了减少与CSS的混淆，HTML不使用术语"块级"或者"行内"作为其内容模型规则的一部分。然而，HTML相比HTML4有更多的<a class="external" href="http://www.w3.org/TR/html5/single-page.html#content-categories" title="content categories">类别</a>，并且，一个元素可以不是任何类别的一部分，也可以是其中一个类别的一部分，或者几个类别的一部分。
+
+    <ul>
+      <li><p>元数据内容(Metadata content)，例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-link-element">link</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-script-element">script</a></code>。
+
+      <li><p>流内容(Flow content)，例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-span-element">span</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-div-element">div</a></code>, 文本。其大致像是HTML4的"块级"和"行内"一起。
+
+      <li><p>分片内容(Sectioning content)，例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-aside-element">aside</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-section-element">section</a></code>。
+
+      <li><p>标题内容(Heading content)，例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-h1-element">h1</a></code>。
+
+      <li><p>短语内容(Phrasing content)，例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-span-element">span</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code>, 文本。其大致像是HTML4的"行内"。是短语内容的元素也是流元素。
+
+      <li><p>嵌入内容(Embedded content)，例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-img-element">img</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-iframe-element">iframe</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#svg">svg</a></code>。
+
+      <li><p>交互内容(Interactive content)，例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-a-element">a</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-button-element">button</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-label-element">label</a></code>。 交互内容不允许嵌套。
+
+    </ul>
+
+    <p>作为一个相比HTML5的广泛的变化，HTML不再有任何只接受在HTML4中被称为"块级"元素的元素；例如，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-body-element">body</a></code> 元素现在允许流内容，所以，相比HTML4严格模式，这更接近HTML4过渡模式。
+
+    <p>进一步的变化包括：
+
+    <ul>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-address-element">address</a></code> 元素现在允许流内容，但是不含标题内容后代，不含分片内容后代，不含<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-header-element">header</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-footer-element">footer</a></code>, 或 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-address-element">address</a></code> 元素后代。
+
+      <li><p>HTML4允许 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-head-element">head</a></code> 中的 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code>。HTML不允许。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-noscript-element">noscript</a></code> 元素在HTML4中是"块级"元素，但在HTML中它是短语内容。
+
+      <li><p>在HTML中 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-thead-element">thead</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tbody-element">tbody</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tfoot-element">tfoot</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tr-element">tr</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-ol-element">ol</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-ul-element">ul</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-dl-element">dl</a></code> 元素允许为空。
+
+      <li><p>表元素必须符合 表模型(<a class="external" href="http://www.w3.org/TR/html5/single-page.html#table-model">table model</a>) (例如 两个单元格不允许重叠)。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code> 元素现在不允许 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-col-element">col</a></code> 元素作为直接子元素。不过，HTML解析器暗示存在 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-colgroup-element">colgroup</a></code> 元素，所以这个变更不会影响 <code>text/html</code> 内容。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code> 元素现在允许 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-tfoot-element">tfoot</a></code> 元素成为最后的子元素。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-caption-element">caption</a></code> 元素现在允许流内容，但不含后代 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-table-element">table</a></code> 元素。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-th-element">th</a></code> 元素现在允许流内容，但不含 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-header-element">header</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-footer-element">footer</a></code>, 分片内容, 或标题内容后代。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-a-element">a</a></code> 元素现在有了一种透明(<a class="external" href="http://www.w3.org/TR/html5/single-page.html#transparent">transparent</a>)内容模型(除了它不能允许交互内容后代外)，意味着它拥护和它父元素相同的内容模型。这意味着 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-a-element">a</a></code> 元素可以包含例如 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-div-element">div</a></code> 元素，只要它的父元素允许流内容。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-ins-element">ins</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-del-element">del</a></code> 元素也有透明内容模型。HTML4有类似的规则在那些无法在DTD中表达的文字里。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code> 元素也有透明内容模型，在其 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-param-element">param</a></code> 子元素之后。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-map-element">map</a></code> 元素也有透明内容模型。如果有一个 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-map-element">map</a></code> 元素祖先，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-area-element">area</a></code> 元素被认为是短语内容，这意味着它们不必作为 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-map-element">map</a></code> 的直接子元素。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-fieldset-element">fieldset</a></code> 元素不再必须有 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-legend-element">legend</a></code> 子元素。
+
+    </ul>
+
+
+    <h2 id="apis"><span class="secno">5 </span>API</h2>
+
+    <p>HTML引入了许多新的API，并扩展，变更或废弃了一些现存的API。
+
+
+    <h3 id="new-apis"><span class="secno">5.1 </span>新API</h3>
+
+    <p>HTML引入了若干API来帮助创建Web应用。这些API可以和为了应用而被引入的新元素一起使用：</p>
+
+    <ul>
+      <li><p>媒体元素(<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-video-element">video</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-audio-element">audio</a></code>)有了控制回放，同步多媒体元素，和定时文本轨道的 API。(比如，字幕)。
+
+      <li><p>约束验证的 API(例如，<code class="external" title="dom-cva-setcustomvalidity"><a href="http://www.w3.org/TR/html5/single-page.html#dom-cva-setcustomvalidity">setCustomValidity()</a></code> 方法)。
+
+      <li><p>启用离线Web应用的 API，包括 应用缓存(<a class="external" href="http://www.w3.org/TR/html5/single-page.html#application-cache">application cache</a>).</li>
+
+      <li><p>允许Web应用来为某种协议或媒体类型注册自身的 API，使用 <code class="external" title="dom-navigator-registerProtocolHandler"><a href="http://www.w3.org/TR/html5/single-page.html#dom-navigator-registerprotocolhandler">registerProtocolHandler()</a></code> 和 <code class="external" title="dom-navigator-registerContentHandler"><a href="http://www.w3.org/TR/html5/single-page.html#dom-navigator-registercontenthandler">registerContentHandler()</a></code>。</li>
+
+      <li><p>结合新的全局 <code class="external" title="attr-contenteditable"><a href="http://www.w3.org/TR/html5/single-page.html#attr-contenteditable">contenteditable</a></code> 属性使用的编辑 API。</li>
+
+      <li><p>暴露文档URL组件并允许脚本导航，重定向和重新载入的 API (<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#location">Location</a></code> 接口)。
+
+      <li><p>暴露会话历史并允许脚本不用实际导航来更新文档URL，使得应用不必滥用 fragment 组件作"Ajax风格"导航的 API (<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#history">History</a></code> 接口)。
+
+      <li><p>base64转换的 API (<code class="external" title="dom-windowbase64-atob"><a href="http://www.w3.org/TR/html5/single-page.html#dom-windowbase64-atob">atob()</a></code> 和 <code class="external" title="dom-windowbase64-btoa"><a href="http://www.w3.org/TR/html5/single-page.html#dom-windowbase64-btoa">btoa()</a></code> 方法)。
+      
+      <li><p>安排基于时间的定时器的回调的 API (<code class="external" title="dom-windowtimers-settimeout"><a href="http://www.w3.org/TR/html5/single-page.html#dom-windowtimers-settimeout">setTimeout()</a></code> 和 <code class="external" title="dom-windowtimers-setinterval"><a href="http://www.w3.org/TR/html5/single-page.html#dom-windowtimers-setinterval">setInterval()</a></code>)。
+
+      <li><p>提示用户的 API (<code class="external" title="dom-alert"><a href="http://www.w3.org/TR/html5/single-page.html#dom-alert">alert()</a></code>, <code class="external" title="dom-confirm"><a href="http://www.w3.org/TR/html5/single-page.html#dom-confirm">confirm()</a></code>, <code class="external" title="dom-prompt"><a href="http://www.w3.org/TR/html5/single-page.html#dom-prompt">prompt()</a></code>)。
+      
+      <li><p>打印文档的 API (<code class="external" title="dom-print"><a href="http://www.w3.org/TR/html5/single-page.html#dom-print">print()</a></code>)。
+      
+      <li><p>处理搜索提供方的 API (<code class="external" title="dom-external-addsearchprovider"><a href="http://www.w3.org/TR/html5/single-page.html#dom-external-addsearchprovider">AddSearchProvider()</a></code> 和 <code class="external" title="dom-external-issearchproviderinstalled"><a href="http://www.w3.org/TR/html5/single-page.html#dom-external-issearchproviderinstalled">IsSearchProviderInstalled()</a></code>)。
+
+      <li><p>定义了 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#window">Window</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#navigator">Navigator</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#external">External</a></code> 接口。
+
+      </ul>
+
+
+    <h3 id="changed-apis"><span class="secno">5.2 </span>变更的API</h3>
+
+    <p>以下来自 DOM Level 2 HTML 的特性在各种方面有变化：
+
+    <ul>
+      <li><p>现在 <code class="external" title="dom-document-title"><a href="http://www.w3.org/TR/html5/single-page.html#document.title">document.title</a></code> 在获取时会折叠空白。
+
+      <li><p>使得 <code class="external" title="dom-document-domain"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-domain">document.domain</a></code> 可设置，其能改变文档的有效脚本域。
+      
+      <li><p><code class="external" title="dom-document-open"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-open">document.open()</a></code> 现在清除文档(如果调用时有两个或者三个参数)，或者行为就如同 <code class="external" title="dom-open"><a href="http://www.w3.org/TR/html5/single-page.html#dom-open">window.open()</a></code> (如果调用时有三个或四个参数)。前一种情况下，在XML中抛出一个异常。
+
+      <li><p><code class="external" title="dom-document-close"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-close">document.close()</a></code>, <code class="external" title="dom-document-close"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-close">document.write()</a></code> 和 <code class="external" title="dom-document-close"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-close">document.writeln()</a></code> 在XML中抛出一个异常。后两个现在支持可变参数；它们能在文档的输入流还在被解析时就在其中加入文本，暗示调用 <code class="external" title="dom-document-open"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-open">document.open()</a></code>，或者在某些情况下被完全忽略。
+
+      <li><p><code class="external" title="dom-document-getElementsByName"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-getelementsbyname">document.getElementsByName()</a></code> 现在返回所有带有与参数匹配的 <code>name</code> 属性的HTML元素。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlformelement">HTMLFormElement</a></code> 的 <code class="external" title="dom-form-elements"><a href="http://www.w3.org/TR/html5/single-page.html#dom-form-elements">elements</a></code> 现在返回一个 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-button-element">button</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-fieldset-element">fieldset</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-input-element">input</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-keygen-element">keygen</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-object-element">object</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-output-element">output</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-select-element">select</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-textarea-element">textarea</a></code> 元素的 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlformcontrolscollection">HTMLFormControlsCollection</a></code><code class="external" title="dom-form-length"><a href="http://www.w3.org/TR/html5/single-page.html#dom-form-length">length</a></code> 返回 <code class="external" title="dom-form-elements"><a href="http://www.w3.org/TR/html5/single-page.html#dom-form-elements">elements</a></code> 中的节点数。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlselectelement">HTMLSelectElement</a></code> 的 <code class="external" title="dom-select-add"><a href="http://www.w3.org/TR/html5/single-page.html#dom-select-add">add()</a></code> 现在也接受一个整数作为其第二个参数
+
+      <li><p>如果参数超出范围，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlselectelement">HTMLSelectElement</a></code> 的 <code class="external" title="dom-select-remove"><a href="http://www.w3.org/TR/html5/single-page.html#dom-select-remove">remove()</a></code> 现在移除集合里的第一个元素。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-a-element">a</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#the-area-element">area</a></code> 元素现在字符串它们的 <code class="external" title="attr-hyperlink-href"><a href="http://www.w3.org/TR/html5/single-page.html#attr-hyperlink-href">href</a></code> 属性。
+      
+      <li><p><code class="external" title="dom-click"><a href="http://www.w3.org/TR/html5/single-page.html#dom-click">click()</a></code>, <code class="external" title="dom-focus"><a href="http://www.w3.org/TR/html5/single-page.html#dom-focus">focus()</a></code> 和 <code class="external" title="dom-blur"><a href="http://www.w3.org/TR/html5/single-page.html#dom-blur">blur()</a></code> 方法现在在所有HTML元素上可用。
+
+    </ul>
+
+    <h3 id="document-extensions"><span class="secno">5.3 </span><code>Document</code>扩展</h3>
+
+    <p>DOM Level 2 HTML 有一个 <code>HTMLDocument</code> 接口，其继承自 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#document">Document</a></code> 并在文档上提供了HTML特定成员。 HTML 已经将这些成员移动到 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#document">Document</a></code> 接口，并且在很多方面扩展了它。因为所有的文档都使用 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#document">Document</a></code> 接口，HTML特定成员现在在所有文档上可用，所以它们在比如SVG文档中也一样可用。它也有几个新的成员：</p>
+
+    <ul>
+      <li><p><code class="external" title="dom-document-location"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-location">location</a></code>, <code class="external" title="dom-document-lastModified"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-lastmodified">lastModified</a></code> 和 <code class="external" title="dom-document-readyState"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-readystate">readyState</a></code> 用来帮助资源元数据管理。
+      
+      <li><p><code class="external" title="dom-document-dir"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-dir">dir</a></code>, <code class="external" title="dom-document-head"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-head">head</a></code>, <code class="external" title="dom-document-embeds"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-embeds">embeds</a></code>, <code class="external" title="dom-document-plugins"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-plugins">plugins</a></code>, <code class="external" title="dom-document-scripts"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-scripts">scripts</a></code>, 以及通用的名称 getter，用来访问DOM树的各个部分。
+
+      <li><p><code class="external" title="dom-document-activeElement"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-activeelement">activeElement</a></code> 和 <code class="external" title="dom-document-hasFocus"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-hasfocus">hasFocus</a></code> 风别用来确定哪个元素是当前的焦点以及 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#document">Document</a></code> 是否有焦点。
+
+      <li><p>编辑 API 的 <code class="external" title="dom-document-designMode"><a href="http://www.w3.org/TR/html5/single-page.html#designMode">designMode</a></code>, <code class="external" title="dom-document-execCommand"><a href="http://www.w3.org/TR/html5/single-page.html#execCommand">execCommand()</a></code>, <code class="external" title="dom-document-queryCommandEnabled"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-querycommandenabled">queryCommandEnabled()</a></code>, <code class="external" title="dom-document-queryCommandIndeterm"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-querycommandindeterm">queryCommandIndeterm()</a></code>, <code class="external" title="dom-document-queryCommandState"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-querycommandstate">queryCommandState()</a></code>, <code class="external" title="dom-document-queryCommandSupported"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-querycommandsupported">queryCommandSupported()</a></code>, <code class="external" title="dom-document-queryCommandValue"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-querycommandvalue">queryCommandValue()</a></code>。
+
+      <li><p>所有的事件处理IDL属性。同样的，<code class="external" title="handler-onreadystatechange"><a href="http://www.w3.org/TR/html5/single-page.html#handler-onreadystatechange">onreadystatechange</a></code> 是一个特殊的事件处理IDL属性，它只在 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#document">Document</a></code> 上可用。
+
+    </ul>
+
+    <p>现有的更改 <code>HTMLDocument</code> 的原型的脚本应该继续工作，因为 <code>window.HTMLDocument</code> 现在返回 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#document">Document</a></code> 接口对象。
+
+    <h3 id="htmlelement-extensions"><span class="secno">5.4 </span><code>HTMLElement</code> 扩展</h3>
+
+    <p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlelement">HTMLElement</a></code> 接口也获得了几个在HTML中的扩展：</p>
+
+    <ul>
+      <li><p><code class="external" title="dom-translate"><a href="http://www.w3.org/TR/html5/single-page.html#dom-translate">translate</a></code>, <code class="external" title="dom-hidden"><a href="http://www.w3.org/TR/html5/single-page.html#dom-hidden">hidden</a></code>, <code class="external" title="dom-tabIndex"><a href="http://www.w3.org/TR/html5/single-page.html#dom-tabindex">tabIndex</a></code>, <code class="external" title="dom-accessKey"><a href="http://www.w3.org/TR/html5/single-page.html#dom-accesskey">accessKey</a></code>, <code class="external" title="dom-contentEditable"><a href="http://www.w3.org/TR/html5/single-page.html#dom-contenteditable">contentEditable</a></code>, <code class="external" title="dom-spellcheck"><a href="http://www.w3.org/TR/html5/single-page.html#dom-spellcheck">spellcheck</a></code> 和 <code class="external" title="dom-style"><a href="http://www.w3.org/TR/html5/single-page.html#dom-style">style</a></code> 反映内容属性。
+
+      <li><p><code class="external" title="dom-dataset"><a href="http://www.w3.org/TR/html5/single-page.html#dom-dataset">dataset</a></code> 是一个处理 <code class="external" title="attr-data-*"><a href="http://www.w3.org/TR/html5/single-page.html#attr-data-*">data-*</a></code> 属性的方便的特性，其作为驼峰式大小写属性暴露。比如，<code><var>elm</var>.dataset.fooBar
+      = 'test'</code> 设置了 <code><var>elm</var></code> 的 <code>data-foo-bar</code> 内容属性。
+
+      <li><p><code class="external" title="dom-click"><a href="http://www.w3.org/TR/html5/single-page.html#dom-click">click()</a></code>, <code class="external" title="dom-focus"><a href="http://www.w3.org/TR/html5/single-page.html#dom-focus">focus()</a></code> 和 <code class="external" title="dom-blur"><a href="http://www.w3.org/TR/html5/single-page.html#dom-blur">blur()</a></code> 允许脚本来模拟点击和移动焦点。
+
+      <li><p><code class="external" title="dom-accessKeyLabel"><a href="http://www.w3.org/TR/html5/single-page.html#dom-accesskeylabel">accessKeyLabel</a></code> 给出了用户代理已经分配给元素的快捷键，Web开发者可以用 <code class="external" title="attr-accesskey"><a href="http://www.w3.org/TR/html5/single-page.html#the-accesskey-attribute">accesskey</a></code> 属性来影响它。
+
+      <li><p><code class="external" title="dom-isContentEditable"><a href="http://www.w3.org/TR/html5/single-page.html#dom-iscontenteditable">isContentEditable</a></code> 返回 true。
+
+      <li><p>所有的事件处理IDL属性。
+    </ul>
+
+    <p>一些成员之前被定义在 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlelement">HTMLElement</a></code> 上但在DOM标准 (<a href="#refsDOM">[DOM]</a>) 中已经被移到 <code class="external"><a href="https://dom.spec.whatwg.org/#element">Element</a></code> 接口。
+
+    <ul>
+      <li><p><code class="external" title="dom-element-id"><a href="https://dom.spec.whatwg.org/#dom-element-id">id</a></code> 反映 <code>id</code> 内容属性。
+
+      <li><p><code class="external" title="dom-element-className"><a href="https://dom.spec.whatwg.org/#dom-element-classname">className</a></code> 反映 <code>class</code> 内容属性。
+
+      <li><p><code class="external" title="dom-element-classList"><a href="https://dom.spec.whatwg.org/#dom-element-classlist">classList</a></code> 是一个方便的 <code class="external" title="dom-element-className"><a href="https://dom.spec.whatwg.org/#dom-element-classname">className</a></code> 访问器。其返回的对象暴露了用于控制元素类名的方法(<code>contains()</code>, <code>add()</code>, <code>remove()</code>, and <code>toggle()</code>)
+
+      <li><p><code class="external" title="dom-element-getElementsByClassName"><a href="https://dom.spec.whatwg.org/#dom-element-getelementsbyclassname">getElementsByClassName()</a></code> 返回一个带有特定类名的元素的列表。
+
+    </ul>
+
+
+    <h3 id="other-extensions"><span class="secno">5.5 </span>其他接口扩展</h3>
+
+    <p>在DOM Level 2 HTML中的一些接口也作了扩展。</p>
+
+    <ul>
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmloptionscollection">HTMLOptionsCollection</a></code> 现在有了遗留调用(legacy caller)，setter 创建器，以及成员 <code class="external" title="dom-HTMLOptionsCollection-add"><a href="http://www.w3.org/TR/html5/single-page.html#dom-htmloptionscollection-add">add()</a></code>, <code class="external" title="dom-HTMLOptionsCollection-remove"><a href="http://www.w3.org/TR/html5/single-page.html#dom-htmloptionscollection-remove">remove()</a></code> 和 <code class="external" title="dom-HTMLOptionsCollection-selectedIndex"><a href="http://www.w3.org/TR/html5/single-page.html#dom-htmloptionscollection-selectedindex">selectedIndex</a></code>。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmllinkelement">HTMLLinkElement</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlstyleelement">HTMLStyleElement</a></code> 现在实现来自CSSOM的 <code>LinkStyle</code> 接口。<a href="#refsCSSOM">[CSSOM]</a>
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlformelement">HTMLFormElement</a></code> 和 <code class="external" title="dom-form-checkvalidity"><a href="http://www.w3.org/TR/html5/single-page.html#dom-form-checkvalidity">checkValidity()</a></code><span> 方法</span> 现在有了命名的 getter 和索引的 getter。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlselectelement">HTMLSelectElement</a></code> 现在有了 getter, <code class="external" title="dom-select-item"><a href="http://www.w3.org/TR/html5/single-page.html#dom-select-item">item()</a></code> 和 <code class="external" title="dom-select-namedItem"><a href="http://www.w3.org/TR/html5/single-page.html#dom-select-nameditem">namedItem()</a></code> 方法，setter 创建器, <code class="external" title="dom-select-selectedOptions"><a href="http://www.w3.org/TR/html5/single-page.html#dom-select-selectedoptions">selectedOptions</a></code> 和 <code class="external" title="dom-lfe-labels"><a href="http://www.w3.org/TR/html5/single-page.html#dom-lfe-labels">labels</a></code> IDL属性， 以及表单约束验证API的成员：<code class="external" title="dom-cva-willvalidate"><a href="http://www.w3.org/TR/html5/single-page.html#dom-cva-willvalidate">willValidate</a></code>。 <code class="external" title="dom-cva-validity"><a href="http://www.w3.org/TR/html5/single-page.html#dom-cva-validity">validity</a></code>, <code class="external" title="dom-cva-validationMessage"><a href="http://www.w3.org/TR/html5/single-page.html#dom-cva-validationmessage">validationMessage</a></code>, <code class="external" title="dom-cva-checkvalidity"><a href="http://www.w3.org/TR/html5/single-page.html#dom-cva-checkvalidity">checkValidity()</a></code>, <code class="external" title="dom-cva-checkvalidity"><a href="http://www.w3.org/TR/html5/single-page.html#dom-cva-checkvalidity">reportValidity()</a></code> 和 <code class="external" title="dom-cva-setCustomValidity"><a href="http://www.w3.org/TR/html5/single-page.html#dom-cva-setcustomvalidity">setCustomValidity()</a></code>。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmloptionelement">HTMLOptionElement</a></code> 现在有了一个构造器 <code class="external" title="dom-option"><a href="http://www.w3.org/TR/html5/single-page.html#dom-option">Option</a></code>。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlinputelement">HTMLInputElement</a></code> 现在有了成员 <code class="external" title="dom-input-files"><a href="http://www.w3.org/TR/html5/single-page.html#dom-input-files">files</a></code>, <code class="external" title="dom-input-height"><a href="http://www.w3.org/TR/html5/single-page.html#dom-input-height">height</a></code>, <code class="external" title="dom-input-indeterminate"><a href="http://www.w3.org/TR/html5/single-page.html#dom-input-indeterminate">indeterminate</a></code>, <code class="external" title="dom-input-list"><a href="http://www.w3.org/TR/html5/single-page.html#dom-input-list">list</a></code>, <code class="external" title="dom-input-valueAsDate"><a href="http://www.w3.org/TR/html5/single-page.html#dom-input-valueasdate">valueAsDate</a></code>, <code class="external" title="dom-input-valueAsNumber"><a href="http://www.w3.org/TR/html5/single-page.html#dom-input-valueasnumber">valueAsNumber</a></code>, <code class="external" title="dom-input-width"><a href="http://www.w3.org/TR/html5/single-page.html#dom-input-width">width</a></code>, <code class="external" title="dom-input-stepUp"><a href="http://www.w3.org/TR/html5/single-page.html#dom-input-stepup">stepUp()</a></code>, <code class="external" title="dom-input-stepDown"><a href="http://www.w3.org/TR/html5/single-page.html#dom-input-stepdown">stepDown()</a></code>， 表单约束验证API成员，<code class="external" title="dom-lfe-labels"><a href="http://www.w3.org/TR/html5/single-page.html#dom-lfe-labels">labels</a></code>，以及文本域选择API的成员：<code class="external" title="dom-textarea/input-selectionStart"><a href="http://www.w3.org/TR/html5/single-page.html#dom-textarea/input-selectionstart">selectionStart</a></code>, <code class="external" title="dom-textarea/input-selectionEnd"><a href="http://www.w3.org/TR/html5/single-page.html#dom-textarea/input-selectionend">selectionEnd</a></code>, <code class="external" title="dom-textarea/input-selectionDirection"><a href="http://www.w3.org/TR/html5/single-page.html#dom-textarea/input-selectiondirection">selectionDirection</a></code>, <code class="external" title="dom-textarea/input-setSelectionRange"><a href="http://www.w3.org/TR/html5/single-page.html#dom-textarea/input-setselectionrange">setSelectionRange()</a></code> 和 <code class="external" title="dom-textarea/input-setRangeText"><a href="http://www.w3.org/TR/html5/single-page.html#dom-textarea/input-setrangetext">setRangeText()</a></code>。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmltextareaelement">HTMLTextAreaElement</a></code> 现在有了成员 <code class="external" title="dom-textarea-textLength"><a href="http://www.w3.org/TR/html5/single-page.html#dom-textarea-textlength">textLength</a></code>，表单约束验证API成员，<code class="external" title="dom-lfe-labels"><a href="http://www.w3.org/TR/html5/single-page.html#dom-lfe-labels">labels</a></code> 以及文本域选择API的成员。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlbuttonelement">HTMLButtonElement</a></code> 现在有了表单约束验证API成员以及 <code class="external" title="dom-lfe-labels"><a href="http://www.w3.org/TR/html5/single-page.html#dom-lfe-labels">labels</a></code>。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmllabelelement">HTMLLabelElement</a></code> 现在有了成员 <code class="external" title="dom-label-control"><a href="http://www.w3.org/TR/html5/single-page.html#dom-label-control">control</a></code>。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlfieldsetelement">HTMLFieldSetElement</a></code> 现在有了成员 <code class="external" title="dom-fieldset-type"><a href="http://www.w3.org/TR/html5/single-page.html#dom-fieldset-type">type</a></code>, <code class="external" title="dom-fieldset-elements"><a href="http://www.w3.org/TR/html5/single-page.html#dom-fieldset-elements">elements</a></code> 以及表单约束验证API成员。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlanchorelement">HTMLAnchorElement</a></code> 现在有了成员 <code class="external" title="dom-a-relList"><a href="http://www.w3.org/TR/html5/single-page.html#dom-a-rellist">relList</a></code>, <code class="external" title="dom-a-text"><a href="http://www.w3.org/TR/html5/single-page.html#dom-a-text">text</a></code>，并实现了 <code class="external"><a href="https://url.spec.whatwg.org/#dom-urlutils">URLUtils</a></code> 接口，其中有成员 <code class="external" title="dom-URL-href"><a href="https://url.spec.whatwg.org/#dom-urlutils-href">href</a></code>, <code class="external" title="dom-URL-origin"><a href="https://url.spec.whatwg.org/#dom-urlutils-origin">origin</a></code>, <code class="external" title="dom-URL-protocol"><a href="https://url.spec.whatwg.org/#dom-urlutils-protocol">protocol</a></code>, <code class="external" title="dom-URL-username"><a href="https://url.spec.whatwg.org/#dom-urlutils-username">username</a></code>, <code class="external" title="dom-URL-password"><a href="https://url.spec.whatwg.org/#dom-urlutils-password">password</a></code>, <code class="external" title="dom-URL-host"><a href="https://url.spec.whatwg.org/#dom-urlutils-host">host</a></code>, <code class="external" title="dom-URL-hostname"><a href="https://url.spec.whatwg.org/#dom-urlutils-hostname">hostname</a></code>, <code class="external" title="dom-URL-port"><a href="https://url.spec.whatwg.org/#dom-urlutils-port">port</a></code>, <code class="external" title="dom-URL-pathname"><a href="https://url.spec.whatwg.org/#dom-urlutils-pathname">pathname</a></code>, <code class="external" title="dom-URL-search"><a href="https://url.spec.whatwg.org/#dom-urlutils-search">search</a></code>, <code class="external" title="dom-URL-searchParams"><a href="https://url.spec.whatwg.org/#dom-urlutils-searchparams">searchParams</a></code> 和 <code class="external" title="dom-URL-hash"><a href="https://url.spec.whatwg.org/#dom-urlutils-hash">hash</a></code>。 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmllinkelement">HTMLLinkElement</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlareaelement">HTMLAreaElement</a></code> 也有了 <code class="external" title="dom-link-relList"><a href="http://www.w3.org/TR/html5/single-page.html#dom-link-rellist">relList</a></code> IDL属性。 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlareaelement">HTMLAreaElement</a></code> 也实现了 <code class="external"><a href="https://url.spec.whatwg.org/#dom-urlutils">URLUtils</a></code> 接口。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlimageelement">HTMLImageElement</a></code> 现在有了一个构造器 <code class="external" title="dom-Image"><a href="http://www.w3.org/TR/html5/single-page.html#dom-image">Image</a></code>，以及成员<code class="external" title="dom-img-naturalWidth"><a href="http://www.w3.org/TR/html5/single-page.html#dom-img-naturalwidth">naturalWidth</a></code>, <code class="external" title="dom-img-naturalHeight"><a href="http://www.w3.org/TR/html5/single-page.html#dom-img-naturalheight">naturalHeight</a></code> 和 <code class="external" title="dom-img-complete"><a href="http://www.w3.org/TR/html5/single-page.html#dom-img-complete">complete</a></code>。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlobjectelement">HTMLObjectElement</a></code> 现在有了成员 <code class="external" title="dom-object-contentWindow"><a href="http://www.w3.org/TR/html5/single-page.html#dom-object-contentwindow">contentWindow</a></code>，表单约束验证API成员和遗留调用(legacy caller)。
+      
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlmapelement">HTMLMapElement</a></code> 现在有了成员 <code class="external" title="dom-map-images"><a href="http://www.w3.org/TR/html5/single-page.html#dom-map-images">images</a></code>。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmltableelement">HTMLTableElement</a></code> 现在有了成员 <code class="external" title="dom-table-createTBody"><a href="http://www.w3.org/TR/html5/single-page.html#dom-table-createtbody">createTBody()</a></code>。
+
+      <li><p><code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmliframeelement">HTMLIFrameElement</a></code> 现在有了成员 <code class="external" title="dom-iframe-contentWindow"><a href="http://www.w3.org/TR/html5/single-page.html#dom-iframe-contentwindow">contentWindow</a></code>。
+
+
+    </ul>
+
+    <p>除了这些以外，在元素的接口上新内容属性大多也有对应的IDL属性，例如，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmllinkelement">HTMLLinkElement</a></code> 上的 <code class="external" title="dom-link-sizes"><a href="http://www.w3.org/TR/html5/single-page.html#dom-link-sizes">sizes</a></code> IDL属性反映 <code class="external" title="attr-link-sizes"><a href="http://www.w3.org/TR/html5/single-page.html#attr-link-sizes">sizes</a></code> 内容属性。
+    
+
+    <h3 id="obsolete-apis"><span class="secno">5.6 </span>废弃的API</h3>
+
+    <p>一些API现在被全部移除了，或者被标记为废弃。
+
+    <p>所有反映本身是废弃的内容属性的IDL属性，现在也废弃；例如，<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlbodyelement">HTMLBodyElement</a></code> 上的反映废弃的 <code class="external" title="dom-body-bgColor"><a href="http://www.w3.org/TR/html5/single-page.html#dom-body-bgcolor">bgColor</a></code> 内容属性的 <code class="external" title="attr-body-bgcolor"><a href="http://www.w3.org/TR/html5/single-page.html#attr-body-bgcolor">bgcolor</a></code> IDL属性现在是废弃的。
+    
+
+    <p>因为元素被废弃以下接口被标记为废弃：<code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlappletelement">HTMLAppletElement</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlframesetelement">HTMLFrameSetElement</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlframeelement">HTMLFrameElement</a></code>, <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmldirectoryelement">HTMLDirectoryElement</a></code> 和 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#htmlfontelement">HTMLFontElement</a></code>。
+    
+    <p><code>HTMLIsIndexElement</code> 接口被全部移除了，因为HTML解析器扩展了一个 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#isindex-0">isindex</a></code> 标签到其他元素。<code>HTMLBaseFontElement</code> 接口也被移除了因为<!-- Anne managed to
+    kill it -->元素没有效果。
+
+    <p>以下这些 <code>HTMLDocument</code> 接口(已经被移到 <code class="external"><a href="http://www.w3.org/TR/html5/single-page.html#document">Document</a></code>)的成员现在是废弃的：<code class="external" title="dom-document-anchors"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-anchors">anchors</a></code> 和 <code class="external" title="dom-document-applets"><a href="http://www.w3.org/TR/html5/single-page.html#dom-document-applets">applets</a></code>。
+
+    <h2 class="no-num" id="acknowledgments">致谢</h2>
+
+    <p>编者想要感谢: 
+
+    Ben Millard,
+    Bruce Lawson,
+    Cameron McCormack,
+    Charles McCathieNevile,
+    Dan Connolly,
+    David H?s?ther,
+    Dennis German,
+    Frank Ellermann,
+    Frank Palinkas,
+    羽田野太巳 (Futomi Hatano),
+    Gordon P. Hemsley,
+    Henri Sivonen,
+    James Graham,
+    Jens O. Meiert,
+    Jeremy Keith,
+    Jukka K. Korpela,
+    Jürgen Jeka,
+    Krijn Hoetmer,
+    Leif Halvard Silli,
+    Maciej Stachowiak,
+    Mallory van Achterberg<!--stommepoes-->,
+    Marcos Caceres,
+    Mark Pilgrim,
+    Martijn Wargers,
+    Martin Leese,
+    Martyn Haigh,
+    Masataka Yakura,
+    Michael Smith,
+    Mike Taylor<!--miketaylr-->,
+    <i>Ms2ger</i>,
+    Olivier Gendrin,
+    ?istein E. Andersen,
+    Philip J?genstedt,
+    Philip Taylor,
+    Randy Peterman,
+    Robin Berjon,
+    Steve Faulkner,
+    Toby Inkster,
+    Xaxio Brandish,
+    Yngve Spjeld Landro and
+    Zhong Yu
+
+    感谢他们为这份文档的贡献。同时也感谢所有多年为HTML做贡献让Web变得更好的人们。
+
+
+
+<h2 class="no-num" id="references">参考文献</h2>
+<div id="anolis-references"><dl><dt id="refsCSSOM">[CSSOM]
+<dd><cite><a href="http://dev.w3.org/csswg/cssom/">CSS Object Model (CSSOM)</a></cite>, Simon Pieters and Glenn Adams. W3C.
+
+<dt id="refsDOCTYPE">[DOCTYPE]
+<dd><cite><a href="https://hsivonen.fi/doctype/">Activating Browser Modes with Doctype</a></cite>, Henri Sivonen.
+
+<dt id="refsDOM">[DOM]
+<dd><cite><a href="https://dom.spec.whatwg.org/">DOM</a></cite>, Anne van Kesteren, Aryeh Gregor and Ms2ger. WHATWG.
+
+<dt id="refsDOM2HTML">[DOM2HTML]
+<dd><cite><a href="http://www.w3.org/TR/DOM-Level-2-HTML/">Document Object Model (DOM) Level 2 HTML Specification</a></cite>, Johnny Stenback, Philippe Le Hégaret and Arnaud Le Hors. W3C.
+
+<dt id="refsHTML">[HTML]
+<dd><cite><a href="https://html.spec.whatwg.org/multipage/">HTML</a></cite>, Ian Hickson. WHATWG.
+
+<dt id="refsHTML4">[HTML4]
+<dd><cite><a href="http://www.w3.org/TR/html4/">HTML 4.01 Specification</a></cite>, Dave Raggett, Arnaud Le Hors and Ian Jacobs. W3C.
+
+<dt id="refsHTML5">[HTML5]
+<dd><cite><a href="http://www.w3.org/TR/2014/REC-html5-20141028/">HTML5</a></cite>, Ian Hickson, Robin Berjon, Steve Faulkner, Travis Leithead et al.. W3C.
+
+<dt id="refsHTML5NIGHTLY">[HTML5NIGHTLY]
+<dd><cite><a href="http://www.w3.org/html/wg/drafts/html/master/">HTML 5.1 Nightly</a></cite>, Robin Berjon, Steve Faulkner, Travis Leithead et al.. W3C.
+
+<dt id="refsXHTML1">[XHTML1]
+<dd><cite><a href="http://www.w3.org/TR/xhtml11/">XHTML? 1.1 - Module-based XHTML - Second Edition</a></cite>, Murray Altheim and Shane McCarron.
+
+<dt id="refsXML">[XML]
+<dd><cite><a href="http://www.w3.org/TR/xml/">Extensible Markup Language</a></cite>, Tim Bray, Jean Paoli, C. M. Sperberg-McQueen et al.. W3C.
+
+<dt id="refsXMLNS">[XMLNS]
+<dd><cite><a href="http://www.w3.org/TR/xml-names/">Namespaces in XML</a></cite>, Tim Bray, Dave Hollander, Andrew Layman et al.. W3C.
+
+</dl></div>
